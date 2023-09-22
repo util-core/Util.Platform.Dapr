@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>$(NetTargetFramework)</TargetFramework>
+		<RootNamespace>Util.Platform.ApiGateway</RootNamespace>
+		<AssemblyName>Util.Platform.ApiGateway</AssemblyName>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..\..</DockerfileContext>
+		<DockerComposeProjectPath>..\..\..\docker-compose\docker-compose.dcproj</DockerComposeProjectPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+		<PackageReference Include="Yarp.ReverseProxy" Version="2.0.1" />
+		<PackageReference Include="Util.Application.WebApi" Version="7.1.29" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Share\Util.Platform.Share.Config\Util.Platform.Share.Config.csproj" />
+	  <ProjectReference Include="..\Util.Platform.ApiGateway.Application\Util.Platform.ApiGateway.Application.csproj" />
+	</ItemGroup>
+
+</Project>

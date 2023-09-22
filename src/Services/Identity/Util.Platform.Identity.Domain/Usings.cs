@@ -1,0 +1,14 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.ComponentModel;
+global using Microsoft.Extensions.Logging;
+global using Microsoft.Extensions.Localization;
+global using Microsoft.AspNetCore.Authentication;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.Extensions.Options;
+global using Microsoft.AspNetCore.Identity;
+global using Util.Platform.Share.Identity.Domain.Models;
+global using Util.Platform.Share.Identity.Domain.Repositories;
+global using Util.Platform.Share.Identity.Domain.Identity;
+global using Util.Platform.Share.Identity.Domain.Services.Abstractions;
+global using Util.Platform.Share.Identity.Domain.Services.Implements;

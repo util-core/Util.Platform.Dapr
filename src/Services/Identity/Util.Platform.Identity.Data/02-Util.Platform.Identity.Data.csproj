@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>$(NetTargetFramework)</TargetFramework>
+	    <RootNamespace>Util.Platform.Identity.Data</RootNamespace>
+	    <AssemblyName>Util.Platform.Identity.Data</AssemblyName>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Util.Platform.Share.Identity.Data" Version="0.1.2" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Util.Platform.Identity.Domain\Util.Platform.Identity.Domain.csproj" />
+    </ItemGroup>
+</Project>

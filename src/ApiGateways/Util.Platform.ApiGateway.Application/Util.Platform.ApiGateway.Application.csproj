@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>$(NetTargetFramework)</TargetFramework>
+		<RootNamespace>Util.Platform.ApiGateway</RootNamespace>
+		<AssemblyName>Util.Platform.ApiGateway.Application</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Util.Microservices.Dapr" Version="7.1.29" />
+		<PackageReference Include="Util.Microservices.Polly" Version="7.1.29" />
+		<PackageReference Include="Util.Platform.Share.Apps" Version="0.1.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Services\Identity\Util.Platform.Identity.Share\Util.Platform.Identity.Share.csproj" />
+	</ItemGroup>
+
+</Project>

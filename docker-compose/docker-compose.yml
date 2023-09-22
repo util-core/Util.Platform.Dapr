@@ -1,0 +1,135 @@
+version: '3.4'
+
+services:
+  zipkin:
+    container_name: zipkin
+    image: openzipkin/zipkin-slim:2.24.2
+    restart: always
+
+  seq:
+    container_name: seq
+    image: datalust/seq:2023.3
+    restart: always
+
+  redis:
+    container_name: redis
+    image: redis:6.0.20-alpine
+    restart: always
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.12-management-alpine
+    restart: always
+
+  mongo:
+    container_name: mongo
+    image: mongo:6.0.9
+    restart: always
+
+  sqlserver:
+    container_name: sqlserver
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    restart: always
+
+  pgsql:
+    container_name: pgsql
+    image: postgres:15.3-alpine3.18
+    restart: always
+
+  mysql:
+    container_name: mysql
+    image: mysql:8.0.33
+    restart: always
+
+  identity:
+    container_name: identity
+    image: ${Registry:-util}/identity:${Tag:-latest}
+    restart: always 
+    build:
+      context: ..
+      dockerfile: src/Services/Identity/Util.Platform.Identity/Dockerfile
+    depends_on:
+      - sqlserver
+      - pgsql
+      - mysql
+      - redis
+      - mongo
+
+  api-gateway:
+    container_name: api-gateway
+    image: ${Registry:-util}/apigateway:${Tag:-latest}
+    restart: always
+    build:
+      context: ..
+      dockerfile: src/ApiGateways/Util.Platform.ApiGateway/Dockerfile
+    depends_on:
+      - identity-api
+
+  tools-api:
+    container_name: tools-api
+    image: ${Registry:-util}/tools-api:${Tag:-latest}
+    restart: always
+    build:
+      context: ..
+      dockerfile: src/Services/Tools/Util.Platform.Tools.Api/Dockerfile
+
+  identity-api:
+    container_name: identity-api
+    image: ${Registry:-util}/identity.api:${Tag:-latest}
+    restart: always
+    build:
+      context: ..
+      dockerfile: src/Services/Identity/Util.Platform.Identity.Api/Dockerfile
+    depends_on:
+      - identity
+
+  health-ui:
+    container_name: health-ui
+    image: ${Registry:-util}/health-ui:${Tag:-latest}
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    build:
+      context: ..
+      dockerfile: src/HealthChecks/Util.Platform.HealthChecks/Dockerfile
+
+  dapr-placement:
+    container_name: dapr-placement
+    image: "daprio/dapr:${Dapr_Tag}"
+    restart: always
+
+  api-gateway-dapr:
+    container_name: api-gateway-dapr
+    image: "daprio/daprd:${Dapr_Tag}"
+    network_mode: "service:api-gateway"
+    depends_on:
+      - api-gateway
+      - redis
+      - mongo
+
+  identity-dapr:
+    container_name: identity-dapr
+    image: "daprio/daprd:${Dapr_Tag}"
+    network_mode: "service:identity"
+    depends_on:
+      - identity
+      - redis
+      - mongo
+
+  identity-api-dapr:
+    container_name: identity-api-dapr
+    image: "daprio/daprd:${Dapr_Tag}"
+    network_mode: "service:identity-api"
+    depends_on:
+      - identity-api
+      - redis
+      - mongo
+
+  tools-api-dapr:
+    container_name: tools-api-dapr
+    image: "daprio/daprd:${Dapr_Tag}"
+    network_mode: "service:tools-api"
+    depends_on:
+      - tools-api
+      - redis
+      - mongo

@@ -1,0 +1,9 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Util.Data;
+global using Util.Platform.Share.Identity.Enums;
+global using Util.Platform.Share.Identity.Data.EntityTypeConfigurations;
+global using Util.Platform.Share.Identity.Data.Repositories;
+global using Util.Platform.Identity.Domain.Models;
+global using Util.Platform.Identity.Domain.Repositories;

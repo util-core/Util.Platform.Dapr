@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>$(NetTargetFramework)</TargetFramework>
+		<RootNamespace>Util.Platform.Tools.Api</RootNamespace>
+		<AssemblyName>Util.Platform.Tools.Api</AssemblyName>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..</DockerfileContext>
+		<DockerComposeProjectPath>..\..\docker-compose\docker-compose.dcproj</DockerComposeProjectPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Util.Application.WebApi" Version="7.1.29" />
+		<PackageReference Include="Util.Logging.Serilog" Version="7.1.29" />
+		<PackageReference Include="Util.Platform.Share.Tools" Version="0.1.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Identity\Util.Platform.Identity.Share\Util.Platform.Identity.Share.csproj" />
+	  <PackageReference Include="Util.Platform.Share.Identity.Common" Version="0.1.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="fonts\MiSans-Bold.ttf">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="fonts\MiSans-Demibold.ttf">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="fonts\MiSans-ExtraLight.ttf">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="fonts\MiSans-Heavy.ttf">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="fonts\MiSans-Light.ttf">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="fonts\MiSans-Medium.ttf">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="fonts\MiSans-Normal.ttf">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="fonts\MiSans-Regular.ttf">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="fonts\MiSans-Semibold.ttf">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="fonts\MiSans-Thin.ttf">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>

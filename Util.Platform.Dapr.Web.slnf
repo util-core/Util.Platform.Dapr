@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "Util.Platform.Dapr.sln",
+    "projects": [
+      "src\\Services\\Identity\\Util.Platform.Identity.Share\\Util.Platform.Identity.Share.csproj",
+      "src\\Web\\Identity\\02-Util.Platform.Ui.Identity.csproj",
+      "src\\Web\\Main\\01-Util.Platform.Ui.Main.csproj"
+    ]
+  }
+}

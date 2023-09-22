@@ -1,0 +1,14 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using Util.Applications.Dtos;
+global using Util.Applications.Trees;
+global using Util.Exceptions;
+global using Util.Validation;
+global using Util.Data.Queries;
+global using Util.Data.Trees;
+global using Util.Events;
+global using Util.Platform.Share.Identity.Enums;
+global using Util.Platform.Share.Identity.Dtos;
+global using Util.Platform.Share.Identity.Queries;

@@ -1,0 +1,15 @@
+﻿global using System;
+global using System.Threading.Tasks;
+global using System.Collections.Generic;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.Extensions.Logging;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Util;
+global using Util.Logging.Serilog;
+global using Util.Applications.Controllers;
+global using Util.Images;
+global using Util.Platform.Share.Tools.Dtos;
+global using Util.Platform.Share.Tools.Services.Abstractions;

@@ -1,0 +1,30 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "api-gateway",
+      "composeLaunchUrl": "http://localhost:30102",
+      "serviceActions": {
+        "redis": "StartWithoutDebugging",
+        "mysql": "StartWithoutDebugging",
+        "pgsql": "StartWithoutDebugging",
+        "api-gateway": "StartDebugging",
+        "dapr-placement": "StartWithoutDebugging",
+        "identity": "StartDebugging",
+        "identity-api": "StartDebugging",
+        "identity-api-dapr": "StartWithoutDebugging",
+        "identity-dapr": "StartWithoutDebugging",
+        "mongo": "StartWithoutDebugging",
+        "rabbitmq": "StartWithoutDebugging",
+        "seq": "StartWithoutDebugging",
+        "sqlserver": "StartWithoutDebugging",
+        "zipkin": "StartWithoutDebugging",
+        "api-gateway-dapr": "StartWithoutDebugging",
+        "health-ui": "StartWithoutDebugging",
+        "tools-api": "StartDebugging"
+      }
+    }
+  }
+}

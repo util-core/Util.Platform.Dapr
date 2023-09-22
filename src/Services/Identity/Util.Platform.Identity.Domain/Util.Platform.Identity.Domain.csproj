@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(NetTargetFramework)</TargetFramework>
+		<RootNamespace>Util.Platform.Identity.Domain</RootNamespace>
+		<AssemblyName>Util.Platform.Identity.Domain</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Util.ObjectMapping.AutoMapper" Version="7.1.29" />
+		<PackageReference Include="Util.Platform.Share.Identity.Domain" Version="0.1.2" />
+	</ItemGroup>
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+</Project>

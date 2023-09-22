@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>$(NetTargetFramework)</TargetFramework>
+	    <RootNamespace>Util.Platform.Identity.Data.PgSql</RootNamespace>
+	    <AssemblyName>Util.Platform.Identity.Data.PgSql</AssemblyName>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Util.Data.EntityFrameworkCore.PostgreSql" Version="7.1.29" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
+	        <PrivateAssets>all</PrivateAssets>
+	        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Util.Platform.Identity.Data\02-Util.Platform.Identity.Data.csproj" />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,175 @@
+version: '3.4'
+
+services:
+  zipkin:
+    ports:
+      - "9411:9411"
+
+  seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "5380:80"
+
+  redis:
+    ports:
+      - "6379:6379"
+
+  rabbitmq:
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  mongo:
+    ports:
+      - "27017"
+    volumes:
+      - mongo-data:/data/db
+    command: ["mongod",
+      "--replSet", "rs0",
+      "--bind_ip_all"
+    ]
+
+  sqlserver:
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+
+  pgsql:
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - "5432:5432"
+    volumes:
+        - pgsql-data:/var/lib/postgresql/data
+
+  mysql:
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+    ports:
+      - "3306:3306"
+    volumes:
+        - mysql-data:/var/lib/mysql
+
+  identity:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - DatabaseType=${Database_Type}
+      - PathBase=/identity
+    ports:
+      - "30100:80"
+      - "50001"
+
+  api-gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - IdentityUrl=http://identity
+      - IdentityUrlExternal=http://localhost:30100
+      - IdentityApiHealthCheckUrl=http://identity-api/healthz/ready
+    ports:
+      - "30101:80"
+      - "50001"
+
+  tools-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "80"
+      - "50001"
+
+  identity-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - IdentityUrl=http://identity
+      - IdentityUrlExternal=http://localhost:30100
+      - DatabaseType=${Database_Type}
+    ports:
+      - "30102:80"
+      - "50001"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  health-ui:
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - HealthChecksUI__HealthChecks__0__Name=Identity Server
+      - HealthChecksUI__HealthChecks__0__Uri=http://identity/healthz/ready
+      - HealthChecksUI__HealthChecks__1__Name=Identity Api
+      - HealthChecksUI__HealthChecks__1__Uri=http://identity-api/healthz/ready
+      - HealthChecksUI__HealthChecks__2__Name=Api Gateway
+      - HealthChecksUI__HealthChecks__2__Uri=http://api-gateway/healthz/ready
+    ports:
+      - "30199:80"
+
+  dapr-placement:
+    command: ["./placement", "-port", "50000", "-log-level", "debug"]
+    ports:
+      - "50000:50000"
+
+  api-gateway-dapr:
+    command: ["./daprd",
+      "-app-id", "api-gateway",
+      "-app-port", "80",
+      "-log-level", "debug",
+      "-resources-path", "/components",
+      "-config", "/configuration/config.yaml"
+    ]
+    volumes:
+      - "../dapr/components/:/components"
+      - "../dapr/configuration/:/configuration"
+
+  identity-dapr:
+    command: ["./daprd",
+      "-app-id", "identity",
+      "-app-port", "80",
+      "-log-level", "debug",
+      "-resources-path", "/components",
+      "-config", "/configuration/config.yaml"
+    ]
+    volumes:
+      - "../dapr/components/:/components"
+      - "../dapr/configuration/:/configuration"
+
+  identity-api-dapr:
+    command: ["./daprd",
+      "-app-id", "identity-api",
+      "-app-port", "80",
+      "-log-level", "debug",
+      "-resources-path", "/components",
+      "-config", "/configuration/config.yaml"
+    ]
+    volumes:
+      - "../dapr/components/:/components"
+      - "../dapr/configuration/:/configuration"
+
+  tools-api-dapr:
+    command: ["./daprd",
+      "-app-id", "tools-api",
+      "-app-port", "80",
+      "-log-level", "debug",
+      "-resources-path", "/components",
+      "-config", "/configuration/config.yaml"
+    ]
+    volumes:
+      - "../dapr/components/:/components"
+      - "../dapr/configuration/:/configuration"
+
+volumes:
+  sqlserver-data:
+    external: false
+  pgsql-data:
+    external: false
+  mysql-data:
+    external: false
+  mongo-data:
+    external: false

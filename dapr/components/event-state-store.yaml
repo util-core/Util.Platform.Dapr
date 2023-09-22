@@ -1,0 +1,16 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: event-state-store
+spec:
+  type: state.mongodb
+  version: v1
+  metadata:
+  - name: keyPrefix
+    value: name
+  - name: host
+    value: mongo
+  - name: databaseName
+    value: util_platform
+  - name: collectionName
+    value: events
