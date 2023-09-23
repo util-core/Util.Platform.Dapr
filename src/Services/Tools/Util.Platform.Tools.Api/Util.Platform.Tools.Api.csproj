@@ -10,14 +10,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Util.Application.WebApi" Version="7.1.29" />
-		<PackageReference Include="Util.Logging.Serilog" Version="7.1.29" />
-		<PackageReference Include="Util.Platform.Share.Tools" Version="0.1.2" />
+		<PackageReference Include="Util.Application.WebApi" Version="7.1.31" />
+		<PackageReference Include="Util.Logging.Serilog" Version="7.1.31" />
+		<PackageReference Include="Util.Platform.Share.Tools" Version="0.1.5" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Identity\Util.Platform.Identity.Share\Util.Platform.Identity.Share.csproj" />
-	  <PackageReference Include="Util.Platform.Share.Identity.Common" Version="0.1.2" />
+	  <PackageReference Include="Util.Platform.Share.Identity.Common" Version="0.1.5" />
 	</ItemGroup>
 
 	<ItemGroup>

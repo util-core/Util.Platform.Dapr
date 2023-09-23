@@ -7,6 +7,7 @@ global using Microsoft.AspNetCore.Authentication;
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.Extensions.Options;
 global using Microsoft.AspNetCore.Identity;
+global using Util.Platform.Share;
 global using Util.Platform.Share.Identity.Domain.Models;
 global using Util.Platform.Share.Identity.Domain.Repositories;
 global using Util.Platform.Share.Identity.Domain.Identity;

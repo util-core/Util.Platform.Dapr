@@ -5,10 +5,10 @@
 		<AssemblyName>Util.Platform.Identity.Application</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Util.Localization" Version="7.1.29" />
-		<PackageReference Include="Util.Microservices.Dapr" Version="7.1.29" />
-		<PackageReference Include="Util.Microservices.Polly" Version="7.1.29" />
-		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.1.2" />
+		<PackageReference Include="Util.Localization" Version="7.1.31" />
+		<PackageReference Include="Util.Microservices.Dapr" Version="7.1.31" />
+		<PackageReference Include="Util.Microservices.Polly" Version="7.1.31" />
+		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.1.5" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Util.Platform.Identity.Data.PgSql\04-Util.Platform.Identity.Data.PgSql.csproj" />
