@@ -30,4 +30,4 @@ global using Util.Platform.Share.Identity.Applications;
 global using Util.Platform.Share.Identity.Applications.Services.Abstractions;
 global using Util.Platform.Share.Identity.Applications.Services.Implements;
 global using Util.Platform.Share.Identity.Applications.Options;
-global using Util.Platform.Share.Identity.Applications.CacheKeys;
+global using Util.Platform.Share.CacheKeys;

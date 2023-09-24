@@ -7,7 +7,6 @@ namespace Util.Platform.Identity.Api.Controllers;
 /// <summary>
 /// 应用程序控制器
 /// </summary>
-//[Acl]
 public class ApplicationController : CrudControllerBase<ApplicationDto, ApplicationQuery> {
     /// <summary>
     /// 初始化应用程序控制器

@@ -1,5 +1,4 @@
-﻿
-using Util.Platform.Identity.Applications;
+﻿using Util.Platform.Identity.Applications;
 
 namespace Util.Platform.Identity.Api;
 

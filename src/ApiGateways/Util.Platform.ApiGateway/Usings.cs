@@ -12,6 +12,7 @@ global using Yarp.ReverseProxy.Transforms;
 global using Util.Microservices.Dapr;
 global using Util.Applications.Controllers;
 global using Util.Sessions;
+global using Util.Security;
 global using Util.Platform.Share; 
 global using Util.Platform.Share.Config;
 global using Util.Platform.Share.Identity.Enums;

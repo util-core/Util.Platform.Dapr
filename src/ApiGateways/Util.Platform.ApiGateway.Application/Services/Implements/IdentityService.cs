@@ -12,7 +12,17 @@ namespace Util.Platform.ApiGateway.Services.Implements {
         /// <param name="serviceInvocation">服务调用操作</param>
         public IdentityService( IServiceInvocation serviceInvocation ) {
             ServiceInvocation = serviceInvocation ?? throw new ArgumentNullException( nameof( serviceInvocation ) );
-            ServiceInvocation.Service( Util.Helpers.Config.GetValue( "AppId:Identity.Api" ) );
+            ServiceInvocation.Service( GetAppId() );
+        }
+
+        /// <summary>
+        /// 获取应用标识
+        /// </summary>
+        protected string GetAppId() {
+            var appId = Util.Helpers.Config.GetValue( "AppId:Identity.Api" );
+            if ( appId.IsEmpty() )
+                return "identity-api";
+            return appId;
         }
 
         /// <summary>

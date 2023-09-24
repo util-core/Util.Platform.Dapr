@@ -55,7 +55,7 @@ public static class ProgramExtensions {
     /// 配置控制器,并注册Dapr
     /// </summary>
     public static WebApplicationBuilder AddControllersWithDapr( this WebApplicationBuilder builder ) {
-        builder.Services.AddControllers().AddDapr();
+        builder.Services.AddControllers( options => options.Filters.Add<AclFilter>() ).AddDapr();
         return builder;
     }
 
