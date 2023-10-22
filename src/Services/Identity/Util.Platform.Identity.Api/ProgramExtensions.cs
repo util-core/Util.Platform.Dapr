@@ -23,12 +23,15 @@ public static class ProgramExtensions {
     public static WebApplicationBuilder AddIdentityUnitOfWork( this WebApplicationBuilder builder ) {
         var dbType = builder.GetDatabaseType();
         builder.AsBuild()
-            .AddSqlServerUnitOfWork<IIdentityUnitOfWork, Util.Platform.Identity.Data.SqlServer.IdentityUnitOfWork>(
+            .AddSqlServerUnitOfWork<IIdentityUnitOfWork, Data.SqlServer.IdentityUnitOfWork>(
                 builder.GetIdentitySqlServerConnectionString(),
                 condition: dbType == DatabaseType.SqlServer )
-            .AddPgSqlUnitOfWork<IIdentityUnitOfWork, Util.Platform.Identity.Data.PgSql.IdentityUnitOfWork>(
+            .AddPgSqlUnitOfWork<IIdentityUnitOfWork, Data.PgSql.IdentityUnitOfWork>(
                 builder.GetIdentityPgSqlConnectionString(),
-                condition: dbType == DatabaseType.PgSql );
+                condition: dbType == DatabaseType.PgSql )
+            .AddMySqlUnitOfWork<IIdentityUnitOfWork, Data.MySql.IdentityUnitOfWork>(
+                builder.GetIdentityMySqlConnectionString(),
+                condition: dbType == DatabaseType.MySql );
         return builder;
     }
 

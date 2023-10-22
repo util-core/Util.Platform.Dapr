@@ -12,6 +12,6 @@
 		</PackageReference>
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Util.Platform.Identity.Data\02-Util.Platform.Identity.Data.csproj" />
+      <ProjectReference Include="..\Util.Platform.Identity.Data\Util.Platform.Identity.Data.csproj" />
     </ItemGroup>
 </Project>

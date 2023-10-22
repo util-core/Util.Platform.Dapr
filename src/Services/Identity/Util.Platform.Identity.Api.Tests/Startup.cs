@@ -1,4 +1,4 @@
-namespace Util.Platform.Identity.Api.Tests; 
+namespace Util.Platform.Identity.Api.Tests;
 
 /// <summary>
 /// 启动配置
@@ -14,6 +14,7 @@ public class Startup {
                 webHostBuilder.UseTestServer()
                     .Configure( t => {
                         t.UseRouting();
+                        t.UseAuthorization();
                         t.UseEndpoints( endpoints => {
                             endpoints.MapControllers();
                         } );
@@ -23,17 +24,21 @@ public class Startup {
             .AddAop()
             .AddUtc()
             .AddDapr()
+            .AddAcl( t => t.AllowAnonymous = true )
             .AddJsonLocalization()
             .AddRedisCache( t => {
-                t.DBConfig.Endpoints.Add( new ServerEndPoint( Config.GetConnectionString( "RedisTestConnection" ), 6379 ) );
+                t.DBConfig.Configuration = Config.GetConnectionString( "RedisTestConnection" );
                 t.DBConfig.KeyPrefix = "Util.Platform.Systems.Api.Tests";
             } )
             .AddSqlServerUnitOfWork<IIdentityUnitOfWork, Data.SqlServer.IdentityUnitOfWork>(
                 Config.GetConnectionString( "SqlServerTestConnection" ),
-                condition: true )
+                condition: false )
             .AddPgSqlUnitOfWork<IIdentityUnitOfWork, Data.PgSql.IdentityUnitOfWork>(
                 Config.GetConnectionString( "PgSqlTestConnection" ),
                 condition: false )
+            .AddMySqlUnitOfWork<IIdentityUnitOfWork, Data.MySql.IdentityUnitOfWork>(
+                Config.GetConnectionString( "MySqlTestConnection" ),
+                condition: true )
             .AddUtil();
     }
 

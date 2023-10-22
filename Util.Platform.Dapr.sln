@@ -54,11 +54,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util.Platform.Identity.Api"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util.Platform.Identity.Application", "src\Services\Identity\Util.Platform.Identity.Application\Util.Platform.Identity.Application.csproj", "{CEAEDE55-303A-4386-8AF9-DD1C5C718588}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-Util.Platform.Identity.Data", "src\Services\Identity\Util.Platform.Identity.Data\02-Util.Platform.Identity.Data.csproj", "{E67D17D4-EDCE-4FFE-812D-85564C146A85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util.Platform.Identity.Data", "src\Services\Identity\Util.Platform.Identity.Data\Util.Platform.Identity.Data.csproj", "{E67D17D4-EDCE-4FFE-812D-85564C146A85}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-Util.Platform.Identity.Data.SqlServer", "src\Services\Identity\Util.Platform.Identity.Data.SqlServer\03-Util.Platform.Identity.Data.SqlServer.csproj", "{D96E7678-A7D3-4186-82EB-A79E63708A1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util.Platform.Identity.Data.SqlServer", "src\Services\Identity\Util.Platform.Identity.Data.SqlServer\Util.Platform.Identity.Data.SqlServer.csproj", "{D96E7678-A7D3-4186-82EB-A79E63708A1A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-Util.Platform.Identity.Data.PgSql", "src\Services\Identity\Util.Platform.Identity.Data.PgSql\04-Util.Platform.Identity.Data.PgSql.csproj", "{528B6531-D871-46B0-B863-03457E9CBC42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util.Platform.Identity.Data.PgSql", "src\Services\Identity\Util.Platform.Identity.Data.PgSql\Util.Platform.Identity.Data.PgSql.csproj", "{528B6531-D871-46B0-B863-03457E9CBC42}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-Util.Platform.Identity.Tests.Share", "src\Services\Identity\Util.Platform.Identity.Tests.Share\01-Util.Platform.Identity.Tests.Share.csproj", "{5E1F0F27-D612-45DC-B52A-573686DEEA62}"
 EndProject
@@ -89,6 +89,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util.Platform.ApiGateway.Application", "src\ApiGateways\Util.Platform.ApiGateway.Application\Util.Platform.ApiGateway.Application.csproj", "{ADD0079E-EBA1-4626-AB1B-70FE91C996E3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util.Platform.Identity.Share", "src\Services\Identity\Util.Platform.Identity.Share\Util.Platform.Identity.Share.csproj", "{621B8C44-BE18-4F86-B8AB-974E09C5AE38}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util.Platform.Share.Service", "src\Share\Util.Platform.Share.Service\Util.Platform.Share.Service.csproj", "{598C9802-EAFB-454E-B624-8E09A05C91F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util.Platform.Identity.Data.MySql", "src\Services\Identity\Util.Platform.Identity.Data.MySql\Util.Platform.Identity.Data.MySql.csproj", "{9379165E-7F33-4982-A5BE-B991C83D5E24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-Util.Platform.Identity.Data.MySql.Tests", "src\Services\Identity\Util.Platform.Identity.Data.MySql.Tests\06-Util.Platform.Identity.Data.MySql.Tests.csproj", "{0F246ED6-E8A4-4BE7-AE3A-D968EF1C4324}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -180,6 +186,18 @@ Global
 		{621B8C44-BE18-4F86-B8AB-974E09C5AE38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{621B8C44-BE18-4F86-B8AB-974E09C5AE38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{621B8C44-BE18-4F86-B8AB-974E09C5AE38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{598C9802-EAFB-454E-B624-8E09A05C91F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{598C9802-EAFB-454E-B624-8E09A05C91F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{598C9802-EAFB-454E-B624-8E09A05C91F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{598C9802-EAFB-454E-B624-8E09A05C91F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9379165E-7F33-4982-A5BE-B991C83D5E24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9379165E-7F33-4982-A5BE-B991C83D5E24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9379165E-7F33-4982-A5BE-B991C83D5E24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9379165E-7F33-4982-A5BE-B991C83D5E24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F246ED6-E8A4-4BE7-AE3A-D968EF1C4324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F246ED6-E8A4-4BE7-AE3A-D968EF1C4324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F246ED6-E8A4-4BE7-AE3A-D968EF1C4324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F246ED6-E8A4-4BE7-AE3A-D968EF1C4324}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -220,6 +238,9 @@ Global
 		{BF066604-D0DE-445C-929E-1DF252BD1F2B} = {A27BAF2D-A0ED-4E13-8DB5-3E99C9C1B72B}
 		{ADD0079E-EBA1-4626-AB1B-70FE91C996E3} = {15B4BE0F-2FC2-4F9B-921E-8A53457977E6}
 		{621B8C44-BE18-4F86-B8AB-974E09C5AE38} = {A061B274-CE33-44C5-B66E-0BFADAC29756}
+		{598C9802-EAFB-454E-B624-8E09A05C91F9} = {0B568148-9BBC-4E76-8C8D-C6609D9B362F}
+		{9379165E-7F33-4982-A5BE-B991C83D5E24} = {56A6E121-6B04-472D-A711-F7D5389ACF11}
+		{0F246ED6-E8A4-4BE7-AE3A-D968EF1C4324} = {63BD8AC8-DD3C-41F7-A6B3-C611EB278E7D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {151C087E-875A-41E3-84B1-2E4C06FDEF09}

@@ -11,8 +11,9 @@
 		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.6.2" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\Util.Platform.Identity.Data.PgSql\04-Util.Platform.Identity.Data.PgSql.csproj" />
-	  <ProjectReference Include="..\Util.Platform.Identity.Data.SqlServer\03-Util.Platform.Identity.Data.SqlServer.csproj" />
+		<ProjectReference Include="..\Util.Platform.Identity.Data.MySql\Util.Platform.Identity.Data.MySql.csproj" />
+		<ProjectReference Include="..\Util.Platform.Identity.Data.PgSql\Util.Platform.Identity.Data.PgSql.csproj" />
+	  <ProjectReference Include="..\Util.Platform.Identity.Data.SqlServer\Util.Platform.Identity.Data.SqlServer.csproj" />
 	  <ProjectReference Include="..\Util.Platform.Identity.Share\Util.Platform.Identity.Share.csproj" />
 	</ItemGroup>
 </Project>

@@ -28,7 +28,10 @@ public static class ProgramExtensions {
                 condition: dbType == DatabaseType.SqlServer )
             .AddPgSqlUnitOfWork<IIdentityUnitOfWork, Util.Platform.Identity.Data.PgSql.IdentityUnitOfWork>(
                 builder.GetIdentityPgSqlConnectionString(),
-                condition: dbType == DatabaseType.PgSql );
+                condition: dbType == DatabaseType.PgSql )
+            .AddMySqlUnitOfWork<IIdentityUnitOfWork, Data.MySql.IdentityUnitOfWork>(
+                builder.GetIdentityMySqlConnectionString(),
+                condition: dbType == DatabaseType.MySql );
         return builder;
     }
 

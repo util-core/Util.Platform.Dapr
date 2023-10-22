@@ -1,0 +1,10 @@
+﻿global using System;
+global using System.IO;
+global using Microsoft.EntityFrameworkCore.Design;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Util.Data.EntityFrameworkCore;
+global using Util.Platform.Identity.Data.EntityTypeConfigurations;
+global using Util.Platform.Identity.Domain.Models;

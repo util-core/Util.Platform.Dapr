@@ -18,15 +18,18 @@ public class Startup {
             .AddDapr()
             .AddJsonLocalization()
             .AddRedisCache( t => {
-                t.DBConfig.Endpoints.Add( new ServerEndPoint( Config.GetConnectionString( "Redis" ), 6379 ) );
+                t.DBConfig.Configuration = Config.GetConnectionString( "Redis" );
                 t.DBConfig.KeyPrefix = "Util.Platform.Identity.Application.Tests";
             } )
             .AddSqlServerUnitOfWork<IIdentityUnitOfWork, Data.SqlServer.IdentityUnitOfWork>(
                 Config.GetConnectionString( "SqlServer" ),
-                condition: true )
+                condition: false )
             .AddPgSqlUnitOfWork<IIdentityUnitOfWork, Data.PgSql.IdentityUnitOfWork>(
                 Config.GetConnectionString( "PgSql" ),
                 condition: false )
+            .AddMySqlUnitOfWork<IIdentityUnitOfWork, Data.MySql.IdentityUnitOfWork>(
+                Config.GetConnectionString( "MySql" ),
+                condition: true )
             .AddUtil();
     }
 

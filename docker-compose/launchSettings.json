@@ -23,7 +23,8 @@
         "zipkin": "StartWithoutDebugging",
         "api-gateway-dapr": "StartWithoutDebugging",
         "health-ui": "StartWithoutDebugging",
-        "tools-api": "StartDebugging"
+        "tools-api": "StartWithoutDebugging",
+        "tools-api-dapr": "StartWithoutDebugging"
       }
     }
   }

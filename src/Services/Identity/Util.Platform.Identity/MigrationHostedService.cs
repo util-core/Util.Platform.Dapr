@@ -38,6 +38,7 @@ public class MigrationHostedService : IHostedService {
         InstallEfTool();
         MigrateSqlServer();
         MigratePgSql();
+        MigrateMySql();
         return Task.CompletedTask;
     }
 
@@ -75,6 +76,14 @@ public class MigrationHostedService : IHostedService {
     /// </summary>
     private void MigratePgSql() {
         var path = Common.JoinPath( Common.GetParentDirectory(), "Util.Platform.Identity.Data.PgSql" );
+        _migrationService.AddMigration( GetMigrationName(), path );
+    }
+
+    /// <summary>
+    /// 迁移MySql
+    /// </summary>
+    private void MigrateMySql() {
+        var path = Common.JoinPath( Common.GetParentDirectory(), "Util.Platform.Identity.Data.MySql" );
         _migrationService.AddMigration( GetMigrationName(), path );
     }
 

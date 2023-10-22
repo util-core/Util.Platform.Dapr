@@ -19,6 +19,13 @@ public static class ShareConfig {
     }
 
     /// <summary>
+    /// 获取Identity MySql数据库连接字符串
+    /// </summary>
+    public static string GetIdentityMySqlConnectionString( this WebApplicationBuilder builder ) {
+        return builder.Configuration.GetConnectionString( "Identity:MySql" );
+    }
+
+    /// <summary>
     /// 获取数据库类型
     /// </summary>
     public static DatabaseType GetDatabaseType( this WebApplicationBuilder builder ) {
