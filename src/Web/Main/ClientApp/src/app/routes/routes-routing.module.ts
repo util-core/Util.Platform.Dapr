@@ -1,17 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import { CustomManifest } from '../microfrontends/custom-manifest';
+import { CustomManifest } from '../core/microfrontends/custom-manifest';
 import { environment } from '@env/environment';
 import { AuthGuard } from 'util-angular';
-// layout
 import { LayoutBasicComponent } from '../layout/basic/basic.component';
-import { LayoutPassportComponent } from '../layout/passport/passport.component';
-// dashboard pages
 import { DashboardComponent } from './dashboard/dashboard.component';
-// single pages
-import { CallbackComponent } from './passport/callback.component';
-import { UserLockComponent } from './passport/lock/lock.component';
 
 const routes: Routes = [
     {
@@ -23,19 +17,8 @@ const routes: Routes = [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
             { path: 'dashboard', component: DashboardComponent, data: { title: '仪表盘', titleI18n: 'dashboard' } },
             { path: 'exception', loadChildren: () => import('./exception/exception.module').then(m => m.ExceptionModule) }
-            // 业务子模块
-            // { path: 'widgets', loadChildren: () => import('./widgets/widgets.module').then(m => m.WidgetsModule) },
         ]
     },
-    {
-        path: 'passport',
-        component: LayoutPassportComponent,
-        children: [
-            { path: 'lock', component: UserLockComponent, data: { title: '锁屏', titleI18n: 'lock' } }
-        ]
-    },
-    // 单页不包裹Layout
-    { path: 'passport/callback/:type', component: CallbackComponent },
     { path: '**', redirectTo: 'exception/404' }
 ];
 
@@ -66,7 +49,7 @@ export function buildRoutes(options: CustomManifest): Routes {
                     remoteName: key,
                     exposedModule: entry.exposedModule
                 })
-                .then(m => m[entry.ngModuleName])
+                    .then(m => m[entry.ngModuleName])
         }
     });
     routes[0].children && routes[0].children.push(...lazyRoutes);

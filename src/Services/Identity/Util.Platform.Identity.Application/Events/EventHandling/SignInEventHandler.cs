@@ -11,9 +11,11 @@ public class SignInEventHandler : EventHandlerBase<SignInEvent> {
     /// </summary>
     /// <param name="cache">缓存</param>
     /// <param name="systemService">系统服务</param>
-    public SignInEventHandler( ICache cache, ISystemService systemService ) {
+    /// <param name="session">用户会话</param>
+    public SignInEventHandler( ICache cache, ISystemService systemService, ISession session ) {
         CacheService = cache ?? throw new ArgumentNullException( nameof( cache ) );
         SystemService = systemService ?? throw new ArgumentNullException( nameof( systemService ) );
+        Session = session ?? throw new ArgumentNullException( nameof( session ) );
     }
 
     /// <summary>
@@ -24,6 +26,10 @@ public class SignInEventHandler : EventHandlerBase<SignInEvent> {
     /// 系统服务
     /// </summary>
     protected ISystemService SystemService { get; }
+    /// <summary>
+    /// 用户会话
+    /// </summary>
+    protected ISession Session { get; }
 
     /// <summary>
     /// 处理事件
@@ -32,10 +38,10 @@ public class SignInEventHandler : EventHandlerBase<SignInEvent> {
     /// <param name="cancellationToken">取消令牌</param>
     public override async Task HandleAsync( SignInEvent @event, CancellationToken cancellationToken ) {
         var userId = @event.UserId;
-        if ( @event.State != SignInState.Succeeded )
+        if( @event.State != SignInState.Succeeded )
             return;
         await RemoveUserCache( userId, cancellationToken );
-        await SetAclCacheAsync( userId, cancellationToken );
+        await SetAclCache( userId, cancellationToken );
     }
 
     /// <summary>
@@ -49,7 +55,12 @@ public class SignInEventHandler : EventHandlerBase<SignInEvent> {
     /// <summary>
     /// 设置用户访问控制列表缓存
     /// </summary>
-    private async Task SetAclCacheAsync( string userId, CancellationToken cancellationToken ) {
-        await SystemService.SetAclCacheAsync( userId.ToGuid(), cancellationToken );
+    private async Task SetAclCache( string userId, CancellationToken cancellationToken ) {
+        var applicationId = Session.GetApplicationId();
+        if( applicationId.IsEmpty() )
+            return;
+        var key = new IsLoadAclCacheKey( userId, applicationId.ToString() );
+        await CacheService.SetAsync( key, 1, cancellationToken: cancellationToken );
+        await SystemService.SetAclCacheAsync( applicationId, userId.ToGuid(), cancellationToken );
     }
 }

@@ -7,15 +7,6 @@ namespace Util.Platform.Identity.Api;
 /// </summary>
 public static class ProgramExtensions {
     /// <summary>
-    /// 配置访问控制列表
-    /// </summary>
-    public static WebApplicationBuilder AddAcl( this WebApplicationBuilder builder ) {
-        builder.AsBuild()
-            .AddAcl<PermissionManager>();
-        return builder;
-    }
-
-    /// <summary>
     /// 配置健康检查
     /// </summary>
     public static WebApplicationBuilder AddHealthChecks( this WebApplicationBuilder builder ) {

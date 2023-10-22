@@ -1,12 +1,9 @@
-using Util.Platform.Identity.Applications.Services.Abstractions;
-using Util.Platform.Identity.Dtos;
-using Util.Platform.Identity.Queries;
-
 namespace Util.Platform.Identity.Api.Controllers;
 
 /// <summary>
 /// 操作权限控制器
 /// </summary>
+[Acl( "permission.view" )]
 public class OperationPermissionController : WebApiControllerBase {
     /// <summary>
     /// 初始化操作权限控制器
@@ -27,9 +24,9 @@ public class OperationPermissionController : WebApiControllerBase {
     /// <param name="query">查询参数</param>
     [HttpGet]
     public async Task<IActionResult> LoadAsync( [FromQuery] PermissionQuery query ) {
-        if ( query.ApplicationId.IsEmpty() )
+        if( query.ApplicationId.IsEmpty() )
             throw new InvalidOperationException( "应用程序标识未设置" );
-        if ( query.RoleId.IsEmpty() )
+        if( query.RoleId.IsEmpty() )
             throw new InvalidOperationException( "角色标识未设置" );
         var operations = await OperationPermissionService.GetOperationsAsync( query.ApplicationId.SafeValue(), query.RoleId.SafeValue(), query.IsDeny.SafeValue() );
         var result = new TreeTableResult<OperationPermissionDto>( operations, false, true ).GetResult();
@@ -41,6 +38,7 @@ public class OperationPermissionController : WebApiControllerBase {
     /// </summary>
     /// <param name="request">权限参数</param>
     [HttpPost( "GrantPermissions" )]
+    [Acl( "permission.grantOperation" )]
     public async Task<IActionResult> GrantPermissionsAsync( PermissionRequest request ) {
         await OperationPermissionService.GrantOperationPermissionsAsync( request );
         return Success();
@@ -51,6 +49,7 @@ public class OperationPermissionController : WebApiControllerBase {
     /// </summary>
     /// <param name="request">权限参数</param>
     [HttpPost( "DenyPermissions" )]
+    [Acl( "permission.denyOperation" )]
     public async Task<IActionResult> DenyPermissionsAsync( PermissionRequest request ) {
         await OperationPermissionService.DenyOperationPermissionsAsync( request );
         return Success();

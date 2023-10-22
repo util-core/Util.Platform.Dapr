@@ -7,7 +7,7 @@ import { ACLService } from '@delon/acl';
 import { getManifest } from '@angular-architects/module-federation';
 import { Util, AppConfig, Result, StateCode, AuthService } from 'util-angular';
 import { I18NService } from '../i18n/i18n.service';
-import { CustomManifest } from '../../microfrontends/custom-manifest';
+import { CustomManifest } from '../microfrontends/custom-manifest';
 import { buildRoutes } from '../../routes/routes-routing.module';
 import { urlConfig } from '../../config/url-config';
 
@@ -34,7 +34,7 @@ export class StartupService {
     constructor(private router: Router,
         private menuService: MenuService, @Inject(ALAIN_I18N_TOKEN) private i18n: I18NService,
         private settingService: SettingsService, private aclService: ACLService,
-        private titleService: TitleService, private authService: AuthService, appConfig: AppConfig        
+        private titleService: TitleService, private authService: AuthService, appConfig: AppConfig
     ) {
         this.util = new Util(null, appConfig);
     }

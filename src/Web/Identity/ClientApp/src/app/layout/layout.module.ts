@@ -1,4 +1,3 @@
-/* eslint-disable import/order */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -21,27 +20,16 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { ReuseTabModule } from '@delon/abc/reuse-tab';
 
 import { LayoutBasicComponent } from './basic/basic.component';
-import { HeaderClearStorageComponent } from './basic/widgets/clear-storage.component';
-import { HeaderFullScreenComponent } from './basic/widgets/fullscreen.component';
 import { HeaderI18nComponent } from './basic/widgets/i18n.component';
 import { HeaderSearchComponent } from './basic/widgets/search.component';
 import { HeaderUserComponent } from './basic/widgets/user.component';
-import { LayoutBlankComponent } from './blank/blank.component';
 
-const COMPONENTS = [LayoutBasicComponent, LayoutBlankComponent];
+const COMPONENTS = [LayoutBasicComponent];
 
 const HEADERCOMPONENTS = [
     HeaderSearchComponent,
-    HeaderFullScreenComponent,
     HeaderI18nComponent,
-    HeaderClearStorageComponent,
     HeaderUserComponent
-];
-
-// passport
-import { LayoutPassportComponent } from './passport/passport.component';
-const PASSPORT = [
-    LayoutPassportComponent
 ];
 
 @NgModule({
@@ -66,8 +54,8 @@ const PASSPORT = [
         NzIconModule,
         ReuseTabModule
     ],
-    declarations: [...COMPONENTS, ...HEADERCOMPONENTS, ...PASSPORT],
-    exports: [...COMPONENTS, ...PASSPORT],
+    declarations: [...COMPONENTS, ...HEADERCOMPONENTS],
+    exports: [...COMPONENTS],
 })
 export class LayoutModule { }
 

@@ -1,4 +1,4 @@
-﻿namespace Util.Platform.Identity.Data.Seeds; 
+﻿namespace Util.Platform.Identity.Data.Seeds;
 
 /// <summary>
 /// 数据种子常量
@@ -8,18 +8,6 @@ public static class SeedConst {
     /// 默认应用程序标识
     /// </summary>
     public static Guid ApplicationId = "e9138a35-a4ff-460e-ac55-b743d55b9691".ToGuid();
-    /// <summary>
-    /// Api应用程序标识
-    /// </summary>
-    public static Guid ApiApplicationId = "0F5FB254-47A1-4E2F-B79A-C7AD1D226AB9".ToGuid();
-    /// <summary>
-    /// Api网关Swagger UI应用程序标识
-    /// </summary>
-    public static Guid ApiGatewaySwaggerId = "a429bc6f-4f95-4bdc-ae79-024aaf41196c".ToGuid();
-    /// <summary>
-    /// Identity Api Swagger UI应用程序标识
-    /// </summary>
-    public static Guid IdentityApiSwaggerId = "9f6bc688-2634-4098-b622-4bde9a3ab5c4".ToGuid();
     /// <summary>
     /// 默认用户标识
     /// </summary>
@@ -53,6 +41,26 @@ public static class SeedConst {
     /// </summary>
     public static Guid ResourceId = "f85e2381-f85f-4978-aeaa-dd0a3106d1ab".ToGuid();
     /// <summary>
+    /// 模块资源标识
+    /// </summary>
+    public static Guid ModuleId = "A6769FB3-1E3B-4FC4-B04C-F0338495DBED".ToGuid();
+    /// <summary>
+    /// 操作资源标识
+    /// </summary>
+    public static Guid OperationId = "1FC74685-C1D4-4BA9-8B81-04CF4B5AE8D0".ToGuid();
+    /// <summary>
+    /// Api资源标识
+    /// </summary>
+    public static Guid ApiResourceId = "9C73CA2B-0412-4F8D-935F-047D6E264334".ToGuid();
+    /// <summary>
+    /// 身份资源标识
+    /// </summary>
+    public static Guid IdentityResourceId = "B3434421-1AC6-4F4B-8BED-04ACCCD8C91C".ToGuid();
+    /// <summary>
+    /// 常用操作标识
+    /// </summary>
+    public static Guid CommonOperationId = "BFFBFCDB-B805-4BCA-ADD3-7A99E584D3A8".ToGuid();
+    /// <summary>
     /// 角色资源标识
     /// </summary>
     public static Guid RoleResourceId = "1a01a8c3-1e6f-47d8-be75-b66da7f7a746".ToGuid();
@@ -60,6 +68,10 @@ public static class SeedConst {
     /// 用户资源标识
     /// </summary>
     public static Guid UserResourceId = "a4c32fa8-f8eb-4ce9-a517-d96d431fcb04".ToGuid();
+    /// <summary>
+    /// 权限资源标识
+    /// </summary>
+    public static Guid PermissionResourceId = "A7C0376A-B558-482D-998E-15EE1F1AC45F".ToGuid();
     /// <summary>
     /// openid身份资源标识
     /// </summary>
@@ -72,8 +84,4 @@ public static class SeedConst {
     /// 查看应用程序操作标识
     /// </summary>
     public static Guid ViewApplicationOperationId = "73443ECD-FB73-4987-9A9D-CD69FC0881C0".ToGuid();
-    /// <summary>
-    /// 创建应用程序操作标识
-    /// </summary>
-    public static Guid CreateApplicationOperationId = "A7C889B7-4F7E-416C-A4E7-6694E61C4ABD".ToGuid();
 }

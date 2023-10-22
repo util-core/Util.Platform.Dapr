@@ -1,4 +1,4 @@
-namespace Util.Platform.Identity.Data.Seeds; 
+namespace Util.Platform.Identity.Data.Seeds;
 
 /// <summary>
 /// 常用操作资源数据种子

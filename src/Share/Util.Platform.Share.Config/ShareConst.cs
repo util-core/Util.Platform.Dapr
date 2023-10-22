@@ -17,10 +17,6 @@ public class ShareConst {
     /// </summary>
     public const string IdentityApiAppName = "Util.Platform.Identity.Api";
     /// <summary>
-    /// Identity Api Grpc应用名称
-    /// </summary>
-    public const string IdentityApiGrpcAppName = "Util.Platform.Identity.Api.Grpc";
-    /// <summary>
     /// Dapr机密存储名称
     /// </summary>
     public const string SecretStoreName = "secretstore";

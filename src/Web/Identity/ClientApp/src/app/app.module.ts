@@ -7,7 +7,7 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { GlobalConfigModule } from './global-config.module';
+import { GlobalConfigModule } from './config/global-config.module';
 import { LayoutModule } from './layout/layout.module';
 import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
@@ -41,9 +41,9 @@ import { IconDefinition } from '@ant-design/icons-angular';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 
- const antDesignIcons = AllIcons as {
-   [key: string]: IconDefinition;
- };
+const antDesignIcons = AllIcons as {
+    [key: string]: IconDefinition;
+};
 const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key])
 // #endregion
 
@@ -56,7 +56,7 @@ const tinymceOptions: TinymceOptions = {
 
 // #region util(util…Ë÷√)
 import { Util, AppConfig } from 'util-angular';
-import { appConfig } from './app-config';
+import { appConfig } from './config/app-config';
 // #endregion
 
 @NgModule({

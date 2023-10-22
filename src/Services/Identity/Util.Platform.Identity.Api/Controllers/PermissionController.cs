@@ -1,5 +1,3 @@
-using Util.Platform.Identity.Applications.Services.Abstractions;
-
 namespace Util.Platform.Identity.Api.Controllers;
 
 /// <summary>

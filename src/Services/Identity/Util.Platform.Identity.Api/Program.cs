@@ -13,9 +13,6 @@ builder.AddUtil( ShareConst.IdentityApiAppName );
 //配置控制器
 builder.AddControllersWithDapr();
 
-//配置访问控制列表
-builder.AddAcl();
-
 //配置Redis缓存
 builder.AddRedisCache();
 
@@ -74,6 +71,9 @@ app.UseRouting();
 
 //配置认证
 app.UseAuthentication();
+
+//加载访问控制列表
+app.UseLoadAcl();
 
 //配置租户
 app.UseTenant();

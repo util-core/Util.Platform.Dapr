@@ -42,10 +42,10 @@ public class AppService : ServiceBase, IAppService {
         var result = new AppData();
         if ( applicationId.IsEmpty() || userId.IsEmpty() )
             return result;
-        var application = await IdentityService.GetApplicationByIdAsync( applicationId );
+        var application = await IdentityService.GetApplicationByIdAsync( applicationId, cancellationToken );
         if ( application == null )
             return result;
-        var user = await IdentityService.GetUserByIdAsync( userId );
+        var user = await IdentityService.GetUserByIdAsync( userId, cancellationToken );
         if ( user == null )
             return result;
         var appResources = await IdentityService.GetAppResourcesAsync();

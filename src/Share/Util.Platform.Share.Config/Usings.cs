@@ -21,3 +21,4 @@ global using Util.Localization;
 global using Util.Caching.EasyCaching;
 global using Util.Microservices.Dapr;
 global using Util.Security.Authorization;
+global using Util.Platform.Share.Authorization;

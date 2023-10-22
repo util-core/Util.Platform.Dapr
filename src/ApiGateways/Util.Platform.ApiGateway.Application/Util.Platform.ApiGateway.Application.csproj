@@ -7,13 +7,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Util.Microservices.Dapr" Version="7.1.33" />
-		<PackageReference Include="Util.Microservices.Polly" Version="7.1.33" />
-		<PackageReference Include="Util.Platform.Share.Apps" Version="0.2.2" />
+		<PackageReference Include="Util.Microservices.Dapr" Version="7.1.59" />
+		<PackageReference Include="Util.Microservices.Polly" Version="7.1.59" />
+		<PackageReference Include="Util.Platform.Share.Apps" Version="0.6.2" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Services\Identity\Util.Platform.Identity.Share\Util.Platform.Identity.Share.csproj" />
+	  <ProjectReference Include="..\..\Share\Util.Platform.Share.Config\Util.Platform.Share.Config.csproj" />
 	</ItemGroup>
 
 </Project>

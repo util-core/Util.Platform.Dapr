@@ -68,6 +68,9 @@ app.UseCustomSwagger();
 //配置认证
 app.UseAuthentication();
 
+//加载访问控制列表
+app.UseLoadAcl();
+
 //配置授权
 app.UseAuthorization();
 

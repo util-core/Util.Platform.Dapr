@@ -39,7 +39,7 @@ public static class ShareConfig {
     }
 
     /// <summary>
-    /// 获取外部身份认证服务器地址
+    /// 获取身份认证外部服务器地址
     /// </summary>
     public static string GetIdentityUrlExternal( this WebApplicationBuilder builder ) {
         return builder.Configuration["IdentityUrlExternal"];
@@ -64,5 +64,15 @@ public static class ShareConfig {
     /// </summary>
     public static string GetPathBase( this WebApplication app ) {
         return app.Configuration["PathBase"];
+    }
+
+    /// <summary>
+    /// 获取Identity应用标识
+    /// </summary>
+    public static string GetIdentityAppId() {
+        var appId = Util.Helpers.Config.GetValue( "AppId:Identity.Api" );
+        if( appId.IsEmpty() )
+            return "identity-api";
+        return appId;
     }
 }

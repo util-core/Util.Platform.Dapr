@@ -9,18 +9,19 @@
         <UserSecretsId>c45c7287-7ff7-4184-8241-455b05d1bf2f</UserSecretsId>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
-        <PackageReference Include="Util.Application.WebApi" Version="7.1.33" />
-        <PackageReference Include="Util.Microservices.HealthChecks" Version="7.1.33" />
-        <PackageReference Include="Util.Ui.NgZorro" Version="7.1.33" />
+        <PackageReference Include="Util.Application.WebApi" Version="7.1.59" />
+        <PackageReference Include="Util.Microservices.HealthChecks" Version="7.1.59" />
+        <PackageReference Include="Util.Ui.NgZorro" Version="7.1.59" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\..\..\Share\Util.Platform.Share.Config\Util.Platform.Share.Config.csproj" />
+      <ProjectReference Include="..\..\..\Share\Util.Platform.Share.Service\Util.Platform.Share.Service.csproj" />
       <ProjectReference Include="..\Util.Platform.Identity.Application\Util.Platform.Identity.Application.csproj" />
     </ItemGroup>
 

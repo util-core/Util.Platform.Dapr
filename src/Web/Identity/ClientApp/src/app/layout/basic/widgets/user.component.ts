@@ -15,14 +15,6 @@ import { AuthService } from "util-angular";
 </div>
 <nz-dropdown-menu #userMenu="nzDropdownMenu">
 <div nz-menu class="width-sm">
-<div nz-menu-item routerLink="/pro/account/center">
-<i nz-icon nzType="user" class="mr-sm"></i>
- 个人中心
- </div>
- <div nz-menu-item routerLink="/pro/account/settings">
- <i nz-icon nzType="setting" class="mr-sm"></i>
- 个人设置
- </div>
 <div nz-menu-item (click)="logout()">
   <i nz-icon nzType="logout" class="mr-sm"></i>
  {{'util.logout'|i18n}}
@@ -32,7 +24,7 @@ import { AuthService } from "util-angular";
 `,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderUserComponent {    
+export class HeaderUserComponent {
     /**
      * 初始化页头用户组件
      * @param settings 设置服务

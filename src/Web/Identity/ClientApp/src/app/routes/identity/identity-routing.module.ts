@@ -23,7 +23,7 @@ export const routes: Routes = [
 /**
  * 系统权限路由模块
  */
-@NgModule( {
-    imports: [RouterModule.forChild( routes )]
-} )
+@NgModule({
+    imports: [RouterModule.forChild(routes)]
+})
 export class IdentityRoutingModule { }

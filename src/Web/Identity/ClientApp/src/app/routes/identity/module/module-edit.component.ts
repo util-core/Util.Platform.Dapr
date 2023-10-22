@@ -71,4 +71,11 @@ export class ModuleEditComponent extends TreeEditComponentBase<ModuleViewModel> 
     protected getBaseUrl() {
         return "module";
     }
+
+    /**
+     * 选择图标
+     */
+    selectIcon(icon) {
+        this.model.icon = icon;
+    }
 }

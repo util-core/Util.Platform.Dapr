@@ -1,4 +1,4 @@
-import { Component, Injector, Input,ViewChild } from '@angular/core';
+import { Component, Injector, Input, ViewChild } from '@angular/core';
 import { environment } from "@env/environment";
 import { ComponentBase } from "util-angular";
 import { RoleViewModel } from "../role/model/role-view-model";

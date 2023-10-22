@@ -1,12 +1,9 @@
-using Util.Platform.Identity.Applications.Services.Abstractions;
-using Util.Platform.Identity.Dtos;
-using Util.Platform.Identity.Queries;
-
 namespace Util.Platform.Identity.Api.Controllers;
 
 /// <summary>
 /// 模块控制器
 /// </summary>
+[Acl( "module.view" )]
 public class ModuleController : NgZorroTreeControllerBase<ModuleDto, CreateModuleRequest, ModuleDto, ResourceQuery> {
     /// <summary>
     /// 初始化模块控制器
@@ -54,8 +51,9 @@ public class ModuleController : NgZorroTreeControllerBase<ModuleDto, CreateModul
     /// </summary>
     /// <param name="request">创建参数</param>
     [HttpPost]
+    [Acl( "module.create" )]
     public new async Task<IActionResult> CreateAsync( CreateModuleRequest request ) {
-        if ( request == null )
+        if( request == null )
             return Fail( ApplicationResource.CreateRequestIsEmpty );
         var id = await ModuleService.CreateAsync( request );
         var result = await ModuleService.GetByIdAsync( id );
@@ -68,6 +66,7 @@ public class ModuleController : NgZorroTreeControllerBase<ModuleDto, CreateModul
     /// <param name="id">标识</param>
     /// <param name="request">修改参数</param>
     [HttpPut( "{id?}" )]
+    [Acl( "module.update" )]
     public new async Task<IActionResult> UpdateAsync( string id, ModuleDto request ) {
         return await base.UpdateAsync( id, request );
     }
@@ -77,6 +76,7 @@ public class ModuleController : NgZorroTreeControllerBase<ModuleDto, CreateModul
     /// </summary>
     /// <param name="ids">标识列表，多个Id用逗号分隔，范例：1,2,3</param>
     [HttpPost( "delete" )]
+    [Acl( "module.delete" )]
     public new async Task<IActionResult> DeleteAsync( [FromBody] string ids ) {
         return await base.DeleteAsync( ids );
     }
@@ -86,6 +86,7 @@ public class ModuleController : NgZorroTreeControllerBase<ModuleDto, CreateModul
     /// </summary>
     /// <param name="ids">标识列表</param>
     [HttpPost( "enable" )]
+    [Acl( "module.enable" )]
     public new async Task<IActionResult> EnableAsync( [FromBody] string ids ) {
         return await base.EnableAsync( ids );
     }
@@ -95,6 +96,7 @@ public class ModuleController : NgZorroTreeControllerBase<ModuleDto, CreateModul
     /// </summary>
     /// <param name="ids">标识列表</param>
     [HttpPost( "disable" )]
+    [Acl( "module.disable" )]
     public new async Task<IActionResult> DisableAsync( [FromBody] string ids ) {
         return await base.DisableAsync( ids );
     }

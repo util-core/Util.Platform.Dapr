@@ -1,4 +1,4 @@
-namespace Util.Platform.Identity.Data.Seeds; 
+namespace Util.Platform.Identity.Data.Seeds;
 
 /// <summary>
 /// 角色数据种子

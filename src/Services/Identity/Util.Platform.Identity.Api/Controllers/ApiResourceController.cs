@@ -1,12 +1,9 @@
-using Util.Platform.Identity.Applications.Services.Abstractions;
-using Util.Platform.Identity.Dtos;
-using Util.Platform.Identity.Queries;
-
 namespace Util.Platform.Identity.Api.Controllers;
 
 /// <summary>
 /// Api资源控制器
 /// </summary>
+[Acl( "apiResource.view" )]
 public class ApiResourceController : NgZorroTreeControllerBase<ApiResourceDto, CreateApiResourceRequest, ApiResourceDto, ResourceQuery> {
     /// <summary>
     /// 初始化Api资源控制器
@@ -54,8 +51,9 @@ public class ApiResourceController : NgZorroTreeControllerBase<ApiResourceDto, C
     /// </summary>
     /// <param name="request">创建参数</param>
     [HttpPost]
+    [Acl( "apiResource.create" )]
     public new async Task<IActionResult> CreateAsync( CreateApiResourceRequest request ) {
-        if ( request == null )
+        if( request == null )
             return Fail( ApplicationResource.CreateRequestIsEmpty );
         var id = await ApiResourceService.CreateAsync( request );
         var result = await ApiResourceService.GetByIdAsync( id );
@@ -68,6 +66,7 @@ public class ApiResourceController : NgZorroTreeControllerBase<ApiResourceDto, C
     /// <param name="id">标识</param>
     /// <param name="request">修改参数</param>
     [HttpPut( "{id?}" )]
+    [Acl( "apiResource.update" )]
     public new async Task<IActionResult> UpdateAsync( string id, ApiResourceDto request ) {
         return await base.UpdateAsync( id, request );
     }
@@ -77,6 +76,7 @@ public class ApiResourceController : NgZorroTreeControllerBase<ApiResourceDto, C
     /// </summary>
     /// <param name="ids">标识列表，多个Id用逗号分隔，范例：1,2,3</param>
     [HttpPost( "delete" )]
+    [Acl( "apiResource.delete" )]
     public new async Task<IActionResult> DeleteAsync( [FromBody] string ids ) {
         return await base.DeleteAsync( ids );
     }
@@ -86,6 +86,7 @@ public class ApiResourceController : NgZorroTreeControllerBase<ApiResourceDto, C
     /// </summary>
     /// <param name="ids">标识列表</param>
     [HttpPost( "enable" )]
+    [Acl( "apiResource.enable" )]
     public new async Task<IActionResult> EnableAsync( [FromBody] string ids ) {
         return await base.EnableAsync( ids );
     }
@@ -95,6 +96,7 @@ public class ApiResourceController : NgZorroTreeControllerBase<ApiResourceDto, C
     /// </summary>
     /// <param name="ids">标识列表</param>
     [HttpPost( "disable" )]
+    [Acl( "apiResource.disable" )]
     public new async Task<IActionResult> DisableAsync( [FromBody] string ids ) {
         return await base.DisableAsync( ids );
     }

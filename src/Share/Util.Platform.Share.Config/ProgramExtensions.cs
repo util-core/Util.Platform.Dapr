@@ -43,6 +43,7 @@ public static class ProgramExtensions {
         builder.AsBuild()
             .AddAop()
             .AddUtc()
+            .AddAcl<PermissionManager>()
             .AddJsonLocalization( options => {
                 options.Cultures = new[] { "zh-CN", "en-US" };
             } )
@@ -55,7 +56,7 @@ public static class ProgramExtensions {
     /// 配置控制器,并注册Dapr
     /// </summary>
     public static WebApplicationBuilder AddControllersWithDapr( this WebApplicationBuilder builder ) {
-        builder.Services.AddControllers( options => options.Filters.Add<AclFilter>() ).AddDapr();
+        builder.Services.AddControllers().AddDapr();
         return builder;
     }
 
@@ -210,6 +211,8 @@ public static class ProgramExtensions {
         var openApi = app.Configuration.GetSection( "OpenApi" );
         if ( openApi.Exists() == false )
             return;
+        var document = openApi.GetRequiredSection( "Document" );
+        var title = document.GetValue<string>( "Title" );
         var version = openApi.GetValue<string>( "Version" );
         var endpoint = openApi.GetRequiredSection( "Endpoint" );
         var name = endpoint.GetValue<string>( "Name" );
@@ -217,12 +220,15 @@ public static class ProgramExtensions {
         var appName = endpoint.GetValue<string>( "AppName" );
         app.UseSwagger();
         app.UseSwaggerUI( options => {
+            options.DocumentTitle = title;
             options.SwaggerEndpoint( $"/swagger/{version}/swagger.json", name );
             options.OAuthClientId( clientId );
             options.OAuthAppName( appName );
             options.OAuthScopes( "openid" );
             options.OAuthUsePkce();
             options.OAuthConfigObject.ClientSecret = "secret";
+            options.ConfigObject.AdditionalItems["logoutUrl"] = "/api/logout";
+            options.IndexStream = () => typeof( IpAccessor ).Assembly.GetManifestResourceStream( "Util.Platform.Share.Swagger.index.html" );
         } );
         app.MapGet( "/", () => Results.LocalRedirect( "~/swagger" ) );
     }

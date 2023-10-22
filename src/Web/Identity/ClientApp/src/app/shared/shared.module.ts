@@ -4,15 +4,19 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AlainThemeModule } from '@delon/theme';
 import { DelonACLModule } from '@delon/acl';
-import { SHARED_DELON_MODULES } from './shared-delon.module';
-import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
+import { Shared_Zorro_Modules } from './shared-zorro.module';
+import { Shared_Delon_Modules } from './shared-delon.module';
+import { Shared_Platform_Modules } from './shared-platform.module';
 import { UtilModule } from 'util-angular';
 import { NgxTinymceModule } from 'ngx-tinymce';
 
-const THIRDMODULES: Array<Type<void>> = [UtilModule, NgxTinymceModule ];
+const THIRDMODULES: Array<Type<void>> = [UtilModule, NgxTinymceModule];
 const COMPONENTS: Array<Type<void>> = [];
 const DIRECTIVES: Array<Type<void>> = [];
 
+/**
+ * ¹²ÏíÄ£¿é
+ */
 @NgModule({
     imports: [
         CommonModule,
@@ -20,14 +24,15 @@ const DIRECTIVES: Array<Type<void>> = [];
         RouterModule,
         ReactiveFormsModule,
         AlainThemeModule.forChild(),
-        DelonACLModule,        
-    ...SHARED_DELON_MODULES,
-    ...SHARED_ZORRO_MODULES,
-    ...THIRDMODULES
+        DelonACLModule,
+        ...Shared_Zorro_Modules,
+        ...Shared_Delon_Modules,
+        ...Shared_Platform_Modules,
+        ...THIRDMODULES
     ],
     declarations: [
-    ...COMPONENTS,
-    ...DIRECTIVES
+        ...COMPONENTS,
+        ...DIRECTIVES
     ],
     exports: [
         CommonModule,
@@ -36,11 +41,12 @@ const DIRECTIVES: Array<Type<void>> = [];
         RouterModule,
         AlainThemeModule,
         DelonACLModule,
-    ...SHARED_DELON_MODULES,
-    ...SHARED_ZORRO_MODULES,
-    ...THIRDMODULES,
-    ...COMPONENTS,
-    ...DIRECTIVES
+        ...Shared_Zorro_Modules,
+        ...Shared_Delon_Modules,
+        ...Shared_Platform_Modules,
+        ...THIRDMODULES,
+        ...COMPONENTS,
+        ...DIRECTIVES
     ]
 })
 export class SharedModule {

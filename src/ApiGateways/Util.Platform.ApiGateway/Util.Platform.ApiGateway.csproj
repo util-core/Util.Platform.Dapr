@@ -12,11 +12,12 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
 		<PackageReference Include="Yarp.ReverseProxy" Version="2.0.1" />
-		<PackageReference Include="Util.Application.WebApi" Version="7.1.33" />
+		<PackageReference Include="Util.Application.WebApi" Version="7.1.59" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Share\Util.Platform.Share.Config\Util.Platform.Share.Config.csproj" />
+		<ProjectReference Include="..\..\Share\Util.Platform.Share.Service\Util.Platform.Share.Service.csproj" />
 	  <ProjectReference Include="..\Util.Platform.ApiGateway.Application\Util.Platform.ApiGateway.Application.csproj" />
 	</ItemGroup>
 

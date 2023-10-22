@@ -1,4 +1,4 @@
-﻿import { Component,Input, Injector } from '@angular/core';
+﻿import { Component, Input, Injector } from '@angular/core';
 import { environment } from "@env/environment";
 import { TableQueryComponentBase } from "util-angular";
 import { ResourceQuery } from '../resource/model/resource-query';
@@ -15,7 +15,7 @@ import { CommonOperationListComponent } from '../common-operation/common-operati
     selector: 'operation-list',
     templateUrl: environment.production ? './html/index.component.html' : '/view/routes/identity/operation'
 })
-export class OperationListComponent extends TableQueryComponentBase<OperationViewModel, ResourceQuery>  {    
+export class OperationListComponent extends TableQueryComponentBase<OperationViewModel, ResourceQuery>  {
     /**
      * 所属模块
      */
@@ -37,7 +37,7 @@ export class OperationListComponent extends TableQueryComponentBase<OperationVie
         if (this.module) {
             result.applicationId = this.module.applicationId;
             result.parentId = this.module.id;
-        }        
+        }
         return result;
     }
 
@@ -53,7 +53,7 @@ export class OperationListComponent extends TableQueryComponentBase<OperationVie
      */
     getCreateData() {
         return {
-            data:this.module
+            data: this.module
         };
     }
 
@@ -72,8 +72,8 @@ export class OperationListComponent extends TableQueryComponentBase<OperationVie
             component: CommonOperationListComponent,
             centered: true,
             showFooter: false,
-            disableClose:true,
-            width:"80%"
+            disableClose: true,
+            width: "80%"
         });
     }
 }

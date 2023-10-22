@@ -9,7 +9,7 @@ import { ModuleListComponent } from '../module/module-list.component';
     selector: 'resource',
     templateUrl: environment.production ? './html/index.component.html' : '/view/routes/identity/resource'
 })
-export class ResourceComponent  {
+export class ResourceComponent {
     /**
      * 当前选项卡索引
      */

@@ -1,12 +1,9 @@
-using Util.Platform.Identity.Applications.Services.Abstractions;
-using Util.Platform.Identity.Dtos;
-using Util.Platform.Identity.Queries;
-
 namespace Util.Platform.Identity.Api.Controllers;
 
 /// <summary>
 /// 身份资源控制器
 /// </summary>
+[Acl( "identityResource.view" )]
 public class IdentityResourceController : QueryControllerBase<IdentityResourceDto, ResourceQuery> {
     /// <summary>
     /// 初始化身份资源控制器
@@ -44,8 +41,9 @@ public class IdentityResourceController : QueryControllerBase<IdentityResourceDt
     /// </summary>
     /// <param name="request">创建参数</param>
     [HttpPost]
+    [Acl( "identityResource.create" )]
     public async Task<IActionResult> CreateAsync( IdentityResourceDto request ) {
-        if ( request == null )
+        if( request == null )
             return Fail( ApplicationResource.CreateRequestIsEmpty );
         var id = await IdentityResourceService.CreateAsync( request );
         var result = await IdentityResourceService.GetByIdAsync( id );
@@ -58,12 +56,13 @@ public class IdentityResourceController : QueryControllerBase<IdentityResourceDt
     /// <param name="id">标识</param>
     /// <param name="request">修改参数</param>
     [HttpPut( "{id?}" )]
+    [Acl( "identityResource.update" )]
     public async Task<IActionResult> UpdateAsync( string id, IdentityResourceDto request ) {
-        if ( request == null )
+        if( request == null )
             return Fail( ApplicationResource.UpdateRequestIsEmpty );
-        if ( id.IsEmpty() && request.Id.IsEmpty() )
+        if( id.IsEmpty() && request.Id.IsEmpty() )
             return Fail( ApplicationResource.IdIsEmpty );
-        if ( request.Id.IsEmpty() )
+        if( request.Id.IsEmpty() )
             request.Id = id;
         await IdentityResourceService.UpdateAsync( request );
         var result = await IdentityResourceService.GetByIdAsync( request.Id );
@@ -75,6 +74,7 @@ public class IdentityResourceController : QueryControllerBase<IdentityResourceDt
     /// </summary>
     /// <param name="ids">标识列表，多个Id用逗号分隔，范例：1,2,3</param>
     [HttpPost( "delete" )]
+    [Acl( "identityResource.delete" )]
     public async Task<IActionResult> DeleteAsync( [FromBody] string ids ) {
         await IdentityResourceService.DeleteAsync( ids );
         return Success();

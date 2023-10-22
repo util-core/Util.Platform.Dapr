@@ -17,7 +17,7 @@
   "PasswordRequiresUpper": "Passwords must have at least one uppercase ('A'-'Z').",
   "PasswordTooShort": "Passwords must be at least {0} characters.",
   "RecoveryCodeRedemptionFailed": "Recovery code redemption failed.",
-  "RoleNotFound": "Role {0} does not exist.",  
+  "RoleNotFound": "Role {0} does not exist.",
   "UserAlreadyHasPassword": "User already has a password set.",
   "UserAlreadyInRole": "User already in role '{0}'.",
   "UserLockedOut": "User is locked out.",

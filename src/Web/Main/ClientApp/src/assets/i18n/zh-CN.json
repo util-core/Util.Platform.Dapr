@@ -1,5 +1,9 @@
 {
   "util": {
+    "clear": "清空",
+    "import": "导入",
+    "export": "导出",
+    "reset": "重置",
     "lang": "语言",
     "yes": "是",
     "no": "否",
@@ -53,7 +57,9 @@
     "endCreationTime": "创建结束时间",
     "beginLastModificationTime": "最后修改起始时间",
     "endLastModificationTime": "最后修改结束时间",
-    "pinYin": "拼音简码"
+    "pinYin": "拼音简码",
+    "i18n": "多语言键名",
+    "isHide": "是否隐藏"
   },
   "app": {
     "totalTip": "共<strong class='text-primary mx-xs'>{{total}}</strong>项",
@@ -62,6 +68,9 @@
     "currentApplication": "当前应用程序: <strong class='text-primary ml-sm'> {{application}}</strong>",
     "selectApplication": "请选择应用程序",
     "baseInfo": "基础信息"
+  },
+  "menu": {
+    "system": "系统管理"
   },
   "identity": {
     "application": {
@@ -85,7 +94,7 @@
       "accessTokenLifetimeExplain": "访问令牌生存期单位: 秒",
       "allowedScopes": "允许的权限范围",
       "allowOfflineAccess": "允许获取刷新令牌",
-      "remark": "备注"
+      "remark": "备注"      
     },
     "claim": {
       "": "声明",
@@ -109,7 +118,7 @@
       "detail": "模块详情",
       "applicationId": "应用程序",
       "applicationName": "应用程序",
-      "uri": "模块地址",
+      "uri": "地址",
       "name": "模块名称",
       "parentId": "父模块",
       "remark": "备注",
@@ -129,6 +138,7 @@
       "uri": "资源标识",
       "name": "操作名称",
       "remark": "备注",
+      "isBase": "是否基础操作",
       "isBindApi": "是否绑定Api资源",
       "apiResource": "关联Api资源",
       "enabled": "启用",

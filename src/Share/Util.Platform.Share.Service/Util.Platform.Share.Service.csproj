@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(NetTargetFramework)</TargetFramework>
+    <RootNamespace>Util.Platform.Share.Services</RootNamespace>
+    <AssemblyName>Util.Platform.Share.Service</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Util.Application.WebApi" Version="7.1.59" />
+    <PackageReference Include="Util.Platform.Share.Middlewares" Version="0.6.2" />
+    <ProjectReference Include="..\Util.Platform.Share.Config\Util.Platform.Share.Config.csproj" />
+  </ItemGroup>
+
+</Project>

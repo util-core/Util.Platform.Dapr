@@ -19,6 +19,7 @@ global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Hosting;
 global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.Localization;
 global using Util.Microservices.HealthChecks;
 global using Util.Platform.Share.Config;
 global using Util.Platform.Identity.Data;
