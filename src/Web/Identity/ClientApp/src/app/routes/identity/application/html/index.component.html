@@ -3,17 +3,17 @@
     
 <form class="search__form" nz-form="">
     <div nz-row="" [nzGutter]="{xs: 8, sm: 16, md: 24, lg: 32}">
-        <div nz-col="" [nzSm]="4" [nzXs]="24">
+        <div nz-col="" [nzLg]="6" [nzMd]="8" [nzSm]="10" [nzXl]="4" [nzXs]="24">
             <nz-form-item><nz-form-label>{{'identity.application.code'|i18n}}</nz-form-label><nz-form-control><input name="code" nz-input="" [(ngModel)]="queryParam.code" /></nz-form-control></nz-form-item>
         </div>
-        <div nz-col="" [nzSm]="4" [nzXs]="24">
+        <div nz-col="" [nzLg]="6" [nzMd]="8" [nzSm]="10" [nzXl]="4" [nzXs]="24">
             <nz-form-item><nz-form-label>{{'identity.application.name'|i18n}}</nz-form-label><nz-form-control><input name="name" nz-input="" [(ngModel)]="queryParam.name" /></nz-form-control></nz-form-item>
         </div>
-        <div nz-col="" [nzSm]="4" [nzXs]="24">
-            <nz-form-item><nz-form-label>{{'identity.application.beginCreationTime'|i18n}}</nz-form-label><nz-form-control><nz-date-picker name="beginCreationTime" [(ngModel)]="queryParam.beginCreationTime" [nzShowTime]="true"></nz-date-picker></nz-form-control></nz-form-item>
+        <div nz-col="" [nzLg]="6" [nzMd]="8" [nzSm]="10" [nzXl]="4" [nzXs]="24">
+            <nz-form-item><nz-form-label>{{'util.beginCreationTime'|i18n}}</nz-form-label><nz-form-control><nz-date-picker name="beginCreationTime" [(ngModel)]="queryParam.beginCreationTime"></nz-date-picker></nz-form-control></nz-form-item>
         </div>
-        <div nz-col="" [nzSm]="4" [nzXs]="24">
-            <nz-form-item><nz-form-label>{{'identity.application.endCreationTime'|i18n}}</nz-form-label><nz-form-control><nz-date-picker name="endCreationTime" [(ngModel)]="queryParam.endCreationTime" [nzShowTime]="true"></nz-date-picker></nz-form-control></nz-form-item>
+        <div nz-col="" [nzLg]="6" [nzMd]="8" [nzSm]="10" [nzXl]="4" [nzXs]="24">
+            <nz-form-item><nz-form-label>{{'util.endCreationTime'|i18n}}</nz-form-label><nz-form-control><nz-date-picker name="endCreationTime" [(ngModel)]="queryParam.endCreationTime"></nz-date-picker></nz-form-control></nz-form-item>
         </div>
         <div class="mb-sm" nz-col="">
             <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
@@ -25,7 +25,7 @@
     <button (click)="delete()" *aclIf="'application.delete'" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
     <button (click)="container.masterToggle()" *ngIf="!container.isMasterChecked()" nz-button=""><i nz-icon="" nzType="check-square"></i>{{'util.selectAll'|i18n}}</button>
     <button (click)="container.masterToggle()" *ngIf="container.isMasterChecked()" nz-button=""><i nz-icon="" nzType="close-square"></i>{{'util.deselectAll'|i18n}}</button>
-    <nz-alert class="my-md" nzType="info" [nzMessage]="t_84ecf0ebfc5144bf9b728e1b83602a67" [nzShowIcon]="true"><ng-template #t_84ecf0ebfc5144bf9b728e1b83602a67="">
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_f745a296dda94e028fe5b93f3ab245c7" [nzShowIcon]="true"><ng-template #t_f745a296dda94e028fe5b93f3ab245c7="">
         <span class="mr-xs" [innerHTML]="'app.totalTip'|i18n:{total:container.total}"></span>,
         <span class="mr-xs" [innerHTML]="'app.loadedTip'|i18n:{length:container.data.length}"></span>,
         <span [innerHTML]="'app.rowsSelected'|i18n:{length:container.getCheckedLength()}"></span>
@@ -35,7 +35,7 @@
 <nz-empty *ngIf="!container.hasData()"></nz-empty>
 
 <div nz-row="" [nzGutter]="24">
-    <div *ngFor="let model of container.data" nz-col="" [nzMd]="6" [nzSm]="8" [nzXs]="24">
+    <div *ngFor="let model of container.data" nz-col="" [nzLg]="6" [nzSm]="8" [nzXs]="24">
         <nz-card (click)="container.toggle(model)" [nzActions]="[actionEdit, actionDetail, actionDelete]" [nzHoverable]="true">
             <div nz-row="">
                 <div nz-col="" nzSpan="24">
@@ -48,13 +48,10 @@
                 </div>
                 <div class="text-center" nz-col="" nzSpan="24">
                     <h1 class="mb0" nz-typography="">
-                        <span>{{model.name}}</span>
+                        <ellipsis lines="1" [tooltip]="true">{{model.name}}</ellipsis>
                     </h1>
                     <div class="text-grey mb-sm" nz-typography="">
                         <span>{{model.code}}</span>
-                    </div>
-                    <div class="mb-sm" nz-typography="">
-                        <span class="mr-sm">{{'identity.application.isApi'|i18n}}:</span><span>{{(model.isApi?'util.yes':'util.no')|i18n}}</span>
                     </div>
                     <div nz-typography="">
                         <nz-tag *ngIf="model.enabled" nzColor="geekblue">{{'util.enabled'|i18n}}</nz-tag>

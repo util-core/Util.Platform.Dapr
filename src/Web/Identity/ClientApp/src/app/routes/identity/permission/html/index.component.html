@@ -1,18 +1,18 @@
 <page-header [autoBreadcrumb]="false" [syncTitle]="false" [title]="'identity.permission'|i18n"></page-header>
-<nz-alert class="my-md" nzType="info" [nzMessage]="t_d4268993b57e4e58b01c0b1a8e7fff17"><ng-template #t_d4268993b57e4e58b01c0b1a8e7fff17="">
+<nz-alert class="my-md" nzType="info" [nzMessage]="t_f5db5fd727ea4e13a998a66edf6f1623"><ng-template #t_f5db5fd727ea4e13a998a66edf6f1623="">
     <span [innerHTML]="'identity.role.currentRoleName'|i18n:{roleName:role.name}"></span>
     <span [innerHTML]="'app.currentApplication'|i18n:{application:selectedApplication.name}"></span>
 </ng-template></nz-alert>
 <div nz-row="" [nzGutter]="48">
     <div nz-col="" nzSpan="4">
-        <application-select (onClick)="selectApplication($event)"></application-select>
+        <platform-application-select (onClick)="selectApplication($event)"></platform-application-select>
     </div>
     <div nz-col="" nzSpan="20">
         <nz-tabset [(nzSelectedIndex)]="selectedTabIndex">
-            <nz-tab [nzTitle]="'identity.permission.grantPermission'|i18n"><ng-template nz-tab="">
+            <nz-tab *aclIf="['permission.grantOperation','permission.grantApi']" [nzTitle]="'identity.permission.grantPermission'|i18n"><ng-template nz-tab="">
                 <resources-permission #grantPermission [role]="role" [application]="selectedApplication"></resources-permission>
             </ng-template></nz-tab>
-            <nz-tab [nzTitle]="'identity.permission.denyPermission'|i18n"><ng-template nz-tab="">
+            <nz-tab *aclIf="['permission.denyOperation','permission.denyApi']" [nzTitle]="'identity.permission.denyPermission'|i18n"><ng-template nz-tab="">
                 <resources-permission #denyPermission [role]="role" [application]="selectedApplication" [isDeny]="true"></resources-permission>
             </ng-template></nz-tab>
         </nz-tabset>

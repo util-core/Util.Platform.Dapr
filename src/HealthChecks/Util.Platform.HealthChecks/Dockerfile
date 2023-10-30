@@ -14,7 +14,6 @@ FROM mcr.microsoft.com/dotnet/sdk:${sdk_version} AS publish
 WORKDIR /src
 COPY ["Directory.Build.props", "."]
 COPY ["build/*", "./build/"]
-COPY ["nuget.config", "."]
 COPY ["src/HealthChecks/Util.Platform.HealthChecks/Util.Platform.HealthChecks.csproj", "src/HealthChecks/Util.Platform.HealthChecks/"]
 RUN dotnet restore "src/HealthChecks/Util.Platform.HealthChecks/Util.Platform.HealthChecks.csproj"
 COPY . .
