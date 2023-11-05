@@ -13,12 +13,12 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-		<PackageReference Include="Util.Localization" Version="7.1.62" />
-		<PackageReference Include="Util.Logging.Serilog" Version="7.1.62" />
-		<PackageReference Include="Util.Caching.EasyCaching" Version="7.1.62" />
-		<PackageReference Include="Util.Microservices.HealthChecks" Version="7.1.62" />
-		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.6.4" />
-		<PackageReference Include="Util.Tenants" Version="7.1.62" />
+		<PackageReference Include="Util.Localization" Version="7.1.68" />
+		<PackageReference Include="Util.Logging.Serilog" Version="7.1.68" />
+		<PackageReference Include="Util.Caching.EasyCaching" Version="7.1.68" />
+		<PackageReference Include="Util.Microservices.HealthChecks" Version="7.1.68" />
+		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.6.5" />
+		<PackageReference Include="Util.Tenants" Version="7.1.68" />
 	</ItemGroup>
 
 </Project>

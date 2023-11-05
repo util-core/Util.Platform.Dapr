@@ -5,8 +5,8 @@
 		<AssemblyName>Util.Platform.Identity.Domain</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Util.ObjectMapping.AutoMapper" Version="7.1.62" />
-		<PackageReference Include="Util.Platform.Share.Identity.Domain" Version="0.6.4" />
+		<PackageReference Include="Util.ObjectMapping.AutoMapper" Version="7.1.68" />
+		<PackageReference Include="Util.Platform.Share.Identity.Domain" Version="0.6.5" />
 	</ItemGroup>
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
