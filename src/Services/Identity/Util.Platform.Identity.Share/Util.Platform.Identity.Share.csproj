@@ -6,9 +6,9 @@
 		<AssemblyName>Util.Platform.Identity.Share</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Util.Platform.Share.Identity.Common" Version="0.6.5" />
-		<PackageReference Include="Util.Platform.Share.Identity.Dtos" Version="0.6.5" />
-		<PackageReference Include="Util.Platform.Share.Identity.Queries" Version="0.6.5" />
+		<PackageReference Include="Util.Platform.Share.Identity.Common" Version="0.7.9" />
+		<PackageReference Include="Util.Platform.Share.Identity.Dtos" Version="0.7.9" />
+		<PackageReference Include="Util.Platform.Share.Identity.Queries" Version="0.7.9" />
 	</ItemGroup>
 
 </Project>
