@@ -17,9 +17,8 @@ public class OperationService : OperationServiceBase<IIdentityUnitOfWork,Resourc
     /// <param name="unitOfWork">工作单元</param>
     /// <param name="resourceRepository">资源仓储</param>
     /// <param name="operationRepository">操作资源仓储</param>
-    /// <param name="localizer">本地化查找器</param>
     public OperationService( IServiceProvider serviceProvider, IIdentityUnitOfWork unitOfWork, IResourceRepository resourceRepository,
-        IOperationRepository operationRepository,IStringLocalizer localizer ) 
-        : base( serviceProvider, unitOfWork, resourceRepository, operationRepository, localizer ) {
+        IOperationRepository operationRepository ) 
+        : base( serviceProvider, unitOfWork, resourceRepository, operationRepository ) {
     }
 }

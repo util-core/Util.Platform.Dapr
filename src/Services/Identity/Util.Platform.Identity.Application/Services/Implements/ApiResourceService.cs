@@ -1,5 +1,4 @@
 ﻿using Util.Platform.Identity.Data;
-using Util.Platform.Identity.Domain.Models;
 using Util.Platform.Identity.Domain.Repositories;
 using Util.Platform.Identity.Dtos;
 using Util.Platform.Identity.Queries;
@@ -18,9 +17,8 @@ public class ApiResourceService : ApiResourceServiceBase<IIdentityUnitOfWork,Res
     /// <param name="unitOfWork">工作单元</param>
     /// <param name="resourceRepository">资源仓储</param>
     /// <param name="apiResourceRepository">Api资源仓储</param>
-    /// <param name="localizer">本地化查找器</param>
     public ApiResourceService( IServiceProvider serviceProvider, IIdentityUnitOfWork unitOfWork, IResourceRepository resourceRepository,
-        IApiResourceRepository apiResourceRepository, IStringLocalizer localizer ) 
-        : base( serviceProvider, unitOfWork, resourceRepository, apiResourceRepository, localizer ) {
+        IApiResourceRepository apiResourceRepository ) 
+        : base( serviceProvider, unitOfWork, resourceRepository, apiResourceRepository ) {
     }
 }

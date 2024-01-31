@@ -7,18 +7,18 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.13" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-		<PackageReference Include="Util.Localization" Version="7.1.114" />
-		<PackageReference Include="Util.Logging.Serilog" Version="7.1.114" />
-		<PackageReference Include="Util.Caching.EasyCaching" Version="7.1.114" />
-		<PackageReference Include="Util.Microservices.HealthChecks" Version="7.1.114" />
-		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.7.9" />
-		<PackageReference Include="Util.Tenants" Version="7.1.114" />
+		<PackageReference Include="Util.Localization" Version="8.0.0" />
+		<PackageReference Include="Util.Logging.Serilog" Version="8.0.0" />
+		<PackageReference Include="Util.Caching.EasyCaching" Version="8.0.0" />
+		<PackageReference Include="Util.Microservices.HealthChecks" Version="8.0.0" />
+		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.8.0" />
+		<PackageReference Include="Util.Tenants" Version="8.0.0" />
 	</ItemGroup>
 
 </Project>

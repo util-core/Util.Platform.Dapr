@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Util.Application.WebApi" Version="7.1.114" />
-    <PackageReference Include="Util.Platform.Share.Middlewares" Version="0.7.9" />
+    <PackageReference Include="Util.Application.WebApi" Version="8.0.0" />
+    <PackageReference Include="Util.Platform.Share.Middlewares" Version="0.8.0" />
     <ProjectReference Include="..\Util.Platform.Share.Config\Util.Platform.Share.Config.csproj" />
   </ItemGroup>
 

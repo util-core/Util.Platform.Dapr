@@ -1,8 +1,8 @@
 # 健康检查UI镜像配置
 
 # 变量定义
-ARG runtime_version=7.0.9-bullseye-slim
-ARG sdk_version=7.0.306
+ARG runtime_version=8.0.1-bookworm-slim
+ARG sdk_version=8.0.101
 
 # 基础阶段
 FROM mcr.microsoft.com/dotnet/aspnet:${runtime_version} AS base

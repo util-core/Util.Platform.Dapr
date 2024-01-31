@@ -10,8 +10,8 @@ import { ReuseTabService, ReuseTabStrategy } from '@delon/abc/reuse-tab';
 const alainConfig: AlainConfig = {
     pageHeader: { homeI18n: 'home' }
 };
-const alainModules: any[] = [AlainThemeModule.forRoot(), DelonACLModule.forRoot()];
-const alainProvides = [{ provide: ALAIN_CONFIG, useValue: alainConfig }];
+const alainModules: any[] = [AlainThemeModule.forRoot(), DelonACLModule];
+const alainProvides = [{ provide: ALAIN_CONFIG, useValue: alainConfig }, ReuseTabService];
 alainProvides.push({ provide: RouteReuseStrategy, useClass: ReuseTabStrategy, deps: [ReuseTabService] } as any);
 const ngZorroConfig: NzConfig = {};
 const zorroProvides = [{ provide: NZ_CONFIG, useValue: ngZorroConfig }];

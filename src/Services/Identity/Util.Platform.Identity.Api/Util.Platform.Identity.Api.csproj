@@ -9,14 +9,14 @@
         <UserSecretsId>c45c7287-7ff7-4184-8241-455b05d1bf2f</UserSecretsId>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
-        <PackageReference Include="Util.Application.WebApi" Version="7.1.114" />
-        <PackageReference Include="Util.Microservices.HealthChecks" Version="7.1.114" />
-        <PackageReference Include="Util.Ui.NgZorro" Version="7.1.114" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
+        <PackageReference Include="Util.Application.WebApi" Version="8.0.0" />
+        <PackageReference Include="Util.Microservices.HealthChecks" Version="8.0.0" />
+        <PackageReference Include="Util.Ui.NgZorro" Version="8.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
     <ItemGroup>

@@ -25,10 +25,7 @@ services:
       - "27017"
     volumes:
       - mongo-data:/data/db
-    command: ["mongod",
-      "--replSet", "rs0",
-      "--bind_ip_all"
-    ]
+    command: ["mongod"]
 
   sqlserver:
     environment:
