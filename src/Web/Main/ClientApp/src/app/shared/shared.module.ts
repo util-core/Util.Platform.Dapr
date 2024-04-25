@@ -2,20 +2,29 @@ import { NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { NgxTinymceModule } from 'ngx-tinymce';
 import { AlainThemeModule } from '@delon/theme';
 import { DelonACLModule } from '@delon/acl';
-import { Shared_Zorro_Modules } from './shared-zorro.module';
-import { Shared_Delon_Modules } from './shared-delon.module';
-import { Shared_Platform_Modules } from './shared-platform.module';
+import { Delon_Modules } from './delon.module';
+import { Zorro_Modules } from './zorro.module';
+import { Platform_Modules } from './platform.module';
 import { UtilModule } from 'util-angular';
-import { NgxTinymceModule } from 'ngx-tinymce';
-
-const THIRDMODULES: Array<Type<void>> = [UtilModule, NgxTinymceModule];
-const COMPONENTS: Array<Type<void>> = [];
-const DIRECTIVES: Array<Type<void>> = [];
 
 /**
- * π≤œÌƒ£øÈ
+ * Ê®°Âùó
+ */
+const Modules: Array<Type<void>> = [UtilModule, NgxTinymceModule];
+/**
+ * ÁªÑ‰ª∂
+ */
+const Components: Array<Type<void>> = [];
+/**
+ * Êåá‰ª§
+ */
+const Directives: Array<Type<void>> = [];
+
+/**
+ * ÂÖ±‰∫´Ê®°Âùó
  */
 @NgModule({
     imports: [
@@ -25,14 +34,12 @@ const DIRECTIVES: Array<Type<void>> = [];
         ReactiveFormsModule,
         AlainThemeModule.forChild(),
         DelonACLModule,
-        ...Shared_Zorro_Modules,
-        ...Shared_Delon_Modules,
-        ...Shared_Platform_Modules,
-        ...THIRDMODULES
-    ],
-    declarations: [
-        ...COMPONENTS,
-        ...DIRECTIVES
+        ...Delon_Modules,
+        ...Zorro_Modules,
+        ...Platform_Modules,
+        ...Modules,
+        ...Components,
+        ...Directives
     ],
     exports: [
         CommonModule,
@@ -41,12 +48,12 @@ const DIRECTIVES: Array<Type<void>> = [];
         RouterModule,
         AlainThemeModule,
         DelonACLModule,
-        ...Shared_Zorro_Modules,
-        ...Shared_Delon_Modules,
-        ...Shared_Platform_Modules,
-        ...THIRDMODULES,
-        ...COMPONENTS,
-        ...DIRECTIVES
+        ...Delon_Modules,
+        ...Zorro_Modules,
+        ...Platform_Modules,
+        ...Modules,
+        ...Components,
+        ...Directives
     ]
 })
 export class SharedModule {

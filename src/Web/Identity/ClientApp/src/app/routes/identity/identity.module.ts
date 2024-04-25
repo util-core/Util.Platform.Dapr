@@ -40,15 +40,15 @@ import { UserListComponent } from './user/user-list.component';
 import { UserEditComponent } from './user/user-edit.component';
 import { UserDetailComponent } from './user/user-detail.component';
 
-import { PermissionComponent } from './permission/index.component';
-import { ResourcesPermissionComponent } from './permission/resouces-permission.component';
+import { PermissionComponent } from './permission/permission.component';
+import { ResourcesPermissionComponent } from './permission/resources-permission.component';
 import { OperationPermissionComponent } from './permission/operation-permission.component';
 import { ApiPermissionComponent } from './permission/api-permission.component';
 
 /**
  * 系统权限模块
  */
-@NgModule({
+@NgModule( {
     declarations: [
         ApplicationListComponent, ApplicationEditComponent, ApplicationDetailComponent,
         ClaimListComponent, ResourceComponent, CommonOperationListComponent,
@@ -65,7 +65,7 @@ import { ApiPermissionComponent } from './permission/api-permission.component';
     ],
     providers: [
         { provide: ModuleConfig, useValue: moduleConfig }
-    ],
-})
+    ]
+} )
 export class IdentityModule {
 }

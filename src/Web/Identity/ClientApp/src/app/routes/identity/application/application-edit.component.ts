@@ -1,5 +1,4 @@
-﻿import { Component, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { EditComponentBase } from "util-angular";
 import { ApplicationViewModel } from './model/application-view-model';
 
@@ -8,21 +7,14 @@ import { ApplicationViewModel } from './model/application-view-model';
  */
 @Component( {
     selector: 'application-edit',
-    templateUrl: environment.production ? './html/edit.component.html' : '/view/routes/identity/application/edit'
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/application-edit.component.html'
 } )
 export class ApplicationEditComponent extends EditComponentBase<ApplicationViewModel> {
     /**
      * 是否客户端
      */
     isClient: boolean;
-
-    /**
-     * 初始化应用程序编辑页
-     * @param injector 注入器
-     */
-    constructor(injector: Injector) {
-        super(injector);
-    }
 
     /**
      * 创建模型

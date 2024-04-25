@@ -1,5 +1,4 @@
-﻿import { Component, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { EditComponentBase } from "util-angular";
 import { ApiResourceViewModel } from './model/api-resource-view-model';
 
@@ -8,17 +7,10 @@ import { ApiResourceViewModel } from './model/api-resource-view-model';
  */
 @Component({
     selector: 'api-resource-detail',
-    templateUrl: environment.production ? './html/detail.component.html' : '/view/routes/identity/apiResource/detail'
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/api-resource-detail.component.html'
 })
 export class ApiResourceDetailComponent extends EditComponentBase<ApiResourceViewModel> {
-    /**
-     * 初始化Api资源详情页
-     * @param injector 注入器
-     */
-    constructor(injector: Injector) {
-        super(injector);
-    }
-
     /**
      * 获取基地址
      */

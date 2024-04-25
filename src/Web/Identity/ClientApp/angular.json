@@ -36,15 +36,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.less"
+              "src/styles.less",
+              "node_modules/ng-zorro-antd/resizable/style/entry.less"
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [
-              "ajv",
-              "ajv-formats",
-              "mockjs",
-              "file-saver",
-              "extend"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
@@ -59,12 +55,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "2mb",
-                  "maximumError": "3mb"
+                  "maximumError": "6mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ],
               "fileReplacements": [
@@ -77,13 +73,9 @@
               "extraWebpackConfig": "webpack.config.prod.js"
             },
             "development": {
-              "aot": false,
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"

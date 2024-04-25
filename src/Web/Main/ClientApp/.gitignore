@@ -12,6 +12,7 @@ yarn-error.log
 
 # IDEs and editors
 .idea/
+.nx/
 .project
 .classpath
 .c9/

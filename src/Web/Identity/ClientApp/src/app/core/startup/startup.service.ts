@@ -1,11 +1,26 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, inject, Provider, APP_INITIALIZER } from '@angular/core';
 import { zip, lastValueFrom } from 'rxjs';
 import { catchError, map, } from 'rxjs/operators';
 import { ALAIN_I18N_TOKEN, MenuService, SettingsService, TitleService } from '@delon/theme';
 import { ACLService } from '@delon/acl';
-import { Util, AppConfig, Result, StateCode, AuthService } from 'util-angular';
+import { Util, Result, StateCode, AuthService } from 'util-angular';
 import { I18NService } from '../i18n/i18n.service';
-import { urlConfig } from '../../config/url-config';
+import { urlConfig } from '../../config/url.config';
+
+/**
+ * 启动服务提供器
+ */
+export function provideStartup(): Provider[] {
+    return [
+        StartupService,
+        {
+            provide: APP_INITIALIZER,
+            useFactory: (service: StartupService) => () => service.initial(),
+            deps: [StartupService],
+            multi: true
+        }
+    ];
+}
 
 /**
  * 启动服务
@@ -13,25 +28,33 @@ import { urlConfig } from '../../config/url-config';
 @Injectable()
 export class StartupService {
     /**
+     * 菜单服务
+     */
+    private menuService = inject(MenuService);
+    /**
+     * 设置服务
+     */
+    private settingService = inject(SettingsService);
+    /**
+     * 标题服务
+     */
+    private titleService = inject(TitleService);
+    /**
+     * 多语言服务
+     */
+    private i18n = inject<I18NService>(ALAIN_I18N_TOKEN);
+    /**
+     * 访问控制服务
+     */
+    private aclService = inject(ACLService);
+    /**
+     * 授权服务
+     */
+    private authService = inject(AuthService);
+    /**
      * 操作入口
      */
-    private util: Util;
-
-    /**
-     * 初始化启动服务
-     * @param menuService 菜单服务
-     * @param i18n 多语言服务
-     * @param settingService 设置服务
-     * @param aclService 访问控制服务
-     * @param titleService 标题服务
-     * @param appConfig 应用配置
-     */
-    constructor(private menuService: MenuService, @Inject(ALAIN_I18N_TOKEN) private i18n: I18NService,
-        private settingService: SettingsService, private aclService: ACLService,
-        private titleService: TitleService, private authService: AuthService, appConfig: AppConfig
-    ) {
-        this.util = new Util(null, appConfig);
-    }
+    private util = Util.create();
 
     /**
      * 启动初始化
@@ -46,7 +69,8 @@ export class StartupService {
                 }
                 return Promise.reject();
             })
-            .catch(() => {
+            .catch((exception) => {
+                console.error(exception);
                 this.authService.nextIsDoneLoading();
             });
     }
@@ -63,7 +87,7 @@ export class StartupService {
     }
 
     /**
-     * 从服务端API加载应用数据
+     * 加载应用数据
      */
     private load(): Promise<void> {
         const defaultLang = this.i18n.defaultLang;
@@ -99,6 +123,7 @@ export class StartupService {
      */
     private setMenu(appData) {
         this.menuService.add(appData.menu);
+        this.menuService.openStrictly = true;
     }
 
     /**

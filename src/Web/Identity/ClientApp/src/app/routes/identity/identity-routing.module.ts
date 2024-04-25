@@ -7,7 +7,7 @@ import { RoleListComponent } from './role/role-list.component';
 import { UserListComponent } from './user/user-list.component';
 
 //路由配置
-export const routes: Routes = [
+const routes: Routes = [
     {
         path: '',
         children: [
@@ -23,7 +23,7 @@ export const routes: Routes = [
 /**
  * 系统权限路由模块
  */
-@NgModule({
-    imports: [RouterModule.forChild(routes)]
-})
+@NgModule( {
+    imports: [RouterModule.forChild( routes )]
+} )
 export class IdentityRoutingModule { }

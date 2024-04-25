@@ -24,6 +24,7 @@
       "ES2022",
       "dom"
     ],
+    "useDefineForClassFields": false,
     "allowSyntheticDefaultImports": true,
     "paths": {
       "@env/environment": [
@@ -35,6 +36,8 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": false
+    "strictTemplates": true,
+    "strictOutputEventTypes": false,
+    "strictInputTypes": false
   }
 }

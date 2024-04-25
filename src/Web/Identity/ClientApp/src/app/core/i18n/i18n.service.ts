@@ -2,15 +2,8 @@ import { Platform } from '@angular/cdk/platform';
 import { registerLocaleData } from '@angular/common';
 import ngEn from '@angular/common/locales/en';
 import ngZh from '@angular/common/locales/zh';
-import { Injectable } from '@angular/core';
-import {
-    DelonLocaleService,
-    en_US as delonEnUS,
-    SettingsService,
-    zh_CN as delonZhCn,
-    _HttpClient,
-    AlainI18nBaseService
-} from '@delon/theme';
+import { Injectable, inject } from '@angular/core';
+import { DelonLocaleService, en_US as delonEnUS, SettingsService, zh_CN as delonZhCn, _HttpClient, AlainI18nBaseService } from '@delon/theme';
 import { AlainConfigService } from '@delon/util/config';
 import { enUS as dfEn, zhCN as dfZhCn } from 'date-fns/locale';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
@@ -47,25 +40,24 @@ const LANGS: { [key: string]: LangConfigData } = {
     }
 };
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class I18NService extends AlainI18nBaseService {
+    private readonly http = inject(_HttpClient);
+    private readonly settings = inject(SettingsService);
+    private readonly nzI18nService = inject(NzI18nService);
+    private readonly delonLocaleService = inject(DelonLocaleService);
+    private readonly platform = inject(Platform);
     private util: Util;
+
     protected override _defaultLang = DEFAULT;
     private _langs = Object.keys(LANGS).map(code => {
         const item = LANGS[code];
         return { code, text: item.text, abbr: item.abbr };
     });
 
-    constructor(
-        private http: _HttpClient,
-        private settings: SettingsService,
-        private nzI18nService: NzI18nService,
-        private delonLocaleService: DelonLocaleService,
-        private platform: Platform,
-        cogSrv: AlainConfigService
-    ) {
+    constructor(cogSrv: AlainConfigService) {
         super(cogSrv);
-        this.util = new Util();
+        this.util = Util.create();
         const defaultLang = this.getDefaultLang();
         this._defaultLang = this._langs.findIndex(w => w.code === defaultLang) === -1 ? DEFAULT : defaultLang;
     }
@@ -83,10 +75,10 @@ export class I18NService extends AlainI18nBaseService {
     }
 
     loadLangData(lang: string): Observable<NzSafeAny> {
-        return this.http.get(`assets/i18n/${lang}.json?b=22`);
+        return this.http.get(`./assets/i18n/${lang}.json`);
     }
 
-    use(lang: string, data: Record<string, unknown>): void {
+    use(lang: string, data: Record<string, unknown>) {
         if (this._currentLang === lang)
             return;
         this._data = this.flatData(data, []);

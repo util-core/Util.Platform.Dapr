@@ -8,7 +8,7 @@ public static class ClaimSeed {
     /// 创建默认声明
     /// </summary>
     public static IEnumerable<Claim> CreateDefaultClaims() {
-        return new[] {
+        return [
             new Claim( "5b422322-b7f5-4081-e10a-fa96a85c5b86".ToGuid() ) {
                 Name = "sub",
                 Remark = "用户标识",
@@ -86,6 +86,6 @@ public static class ClaimSeed {
                 SortId = 7,
                 Version = "dc0fc00c-d885-4274-b8b1-d9bfae682f5e"u8.ToArray()
             }
-        };
+        ];
     }
 }

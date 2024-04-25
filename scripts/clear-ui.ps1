@@ -13,6 +13,8 @@ foreach ($project in $projects)
     rimraf $project/node_modules
     rimraf $project/.angular
     rimraf $project/dist
+    rimraf $project/yarn.lock    
+    rimraf $project/.nx
 }
 
 Write-Host "remove completed."

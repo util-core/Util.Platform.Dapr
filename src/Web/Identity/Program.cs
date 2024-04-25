@@ -9,8 +9,7 @@ var builder = WebApplication.CreateBuilder( args );
 builder.AsBuild()
     .AddSerilog()
     .AddNgZorro( t => {
-        t.EnableDefaultOptionText = true;
-        t.EnableI18n = true;
+        t.EnableTableSort = true;
     } )
     .AddUtil();
 
@@ -18,7 +17,7 @@ builder.AsBuild()
 var app = builder.Build();
 
 //配置请求管道
-app.UseNgZorro( "http://localhost:6003" );
+app.UseNgZorro( 6003 );
 
 //运行应用
 app.Run();

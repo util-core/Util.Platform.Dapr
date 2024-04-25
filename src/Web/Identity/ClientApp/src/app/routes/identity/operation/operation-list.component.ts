@@ -1,5 +1,4 @@
-﻿import { Component, Input, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { TableQueryComponentBase } from "util-angular";
 import { ResourceQuery } from '../resource/model/resource-query';
 import { OperationViewModel } from './model/operation-view-model';
@@ -13,7 +12,8 @@ import { CommonOperationListComponent } from '../common-operation/common-operati
  */
 @Component({
     selector: 'operation-list',
-    templateUrl: environment.production ? './html/index.component.html' : '/view/routes/identity/operation'
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/operation-list.component.html'
 })
 export class OperationListComponent extends TableQueryComponentBase<OperationViewModel, ResourceQuery>  {
     /**
@@ -22,11 +22,38 @@ export class OperationListComponent extends TableQueryComponentBase<OperationVie
     @Input() module: ModuleViewModel;
 
     /**
-     * 初始化操作资源列表页
-     * @param injector 注入器
+     * 获取创建组件
      */
-    constructor(injector: Injector) {
-        super(injector);
+    getCreateComponent() {
+        return OperationEditComponent;
+    }
+
+    /**
+     * 获取详情组件
+     */
+    getDetailComponent() {
+        return OperationDetailComponent;
+    }
+
+    /**
+     * 获取创建标题
+     */
+    getCreateTitle() {
+        return 'identity.operation.create';
+    }
+
+    /**
+     * 获取更新标题
+     */
+    getEditTitle() {
+        return 'identity.operation.update';
+    }
+
+    /**
+     * 获取详情标题
+     */
+    getDetailTitle() {
+        return 'identity.operation.detail';
     }
 
     /**
@@ -42,13 +69,6 @@ export class OperationListComponent extends TableQueryComponentBase<OperationVie
     }
 
     /**
-     * 获取创建组件
-     */
-    getCreateComponent() {
-        return OperationEditComponent;
-    }
-
-    /**
      * 获取创建数据
      */
     getCreateData() {
@@ -58,22 +78,14 @@ export class OperationListComponent extends TableQueryComponentBase<OperationVie
     }
 
     /**
-     * 获取详情弹出框组件
-     */
-    getDetailComponent() {
-        return OperationDetailComponent;
-    }
-
-    /**
      * 打开管理常用操作
      */
     openManageCommonOperation() {
         this.util.dialog.open({
             component: CommonOperationListComponent,
-            centered: true,
             showFooter: false,
             disableClose: true,
-            width: "80%"
+            title: "identity.commonOperation"
         });
     }
 }

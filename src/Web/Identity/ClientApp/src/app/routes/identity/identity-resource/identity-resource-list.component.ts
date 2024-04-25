@@ -1,5 +1,4 @@
-﻿import { Component, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TableQueryComponentBase } from 'util-angular';
 import { ResourceQuery } from '../resource/model/resource-query';
 import { IdentityResourceViewModel } from './model/identity-resource-view-model';
@@ -11,17 +10,10 @@ import { IdentityResourceDetailComponent } from './identity-resource-detail.comp
  */
 @Component({
     selector: 'identity-resource-list',
-    templateUrl: environment.production ? './html/index.component.html' : '/view/routes/identity/identityResource'
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/identity-resource-list.component.html'
 })
-export class IdentityResourceListComponent extends TableQueryComponentBase<IdentityResourceViewModel, ResourceQuery>  {
-    /**
-     * 初始化身份资源列表页
-     * @param injector 注入器
-     */
-    constructor(injector: Injector) {
-        super(injector);
-    }
-    
+export class IdentityResourceListComponent extends TableQueryComponentBase<IdentityResourceViewModel, ResourceQuery>  {    
     /**
      * 获取创建弹出框组件
      */
@@ -34,5 +26,26 @@ export class IdentityResourceListComponent extends TableQueryComponentBase<Ident
      */
     getDetailComponent() {
         return IdentityResourceDetailComponent;
+    }
+
+    /**
+     * 获取创建标题
+     */
+    getCreateTitle() {
+        return 'identity.identityResource.create';
+    }
+
+    /**
+     * 获取更新标题
+     */
+    getEditTitle() {
+        return 'identity.identityResource.update';
+    }
+
+    /**
+     * 获取详情标题
+     */
+    getDetailTitle() {
+        return 'identity.identityResource.detail';
     }
 }

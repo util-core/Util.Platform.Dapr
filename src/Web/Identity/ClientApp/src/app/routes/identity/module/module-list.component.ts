@@ -1,5 +1,4 @@
-﻿import { Component, Injector, ViewChild } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { TreeTableQueryComponentBase } from "util-angular";
 import { ResourceQuery } from '../resource/model/resource-query';
 import { ModuleViewModel } from './model/module-view-model';
@@ -13,7 +12,8 @@ import { ModuleDetailComponent } from './module-detail.component';
  */
 @Component({
     selector: 'module-list',
-    templateUrl: environment.production ? './html/index.component.html' : '/view/routes/identity/module',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/module-list.component.html'
 })
 export class ModuleListComponent extends TreeTableQueryComponentBase<ModuleViewModel, ResourceQuery>  {
     /**
@@ -25,17 +25,55 @@ export class ModuleListComponent extends TreeTableQueryComponentBase<ModuleViewM
      */
     selectedModule;
     /**
+     * 隐藏应用程序
+     */
+    hideApplication;
+    /**
      * 应用程序选择组件
      */
     @ViewChild(ApplicationSelectComponent) applicationSelect: ApplicationSelectComponent;
 
     /**
      * 初始化模块列表页
-     * @param injector 注入器
      */
-    constructor(injector: Injector) {
-        super(injector);
+    constructor() {
+        super();
         this.selectedApplication = new ApplicationViewModel();
+    }
+
+    /**
+     * 获取创建弹出层组件
+     */
+    getCreateComponent() {
+        return ModuleEditComponent;
+    }
+
+    /**
+     * 获取详情弹出框组件
+     */
+    getDetailComponent() {
+        return ModuleDetailComponent;
+    }
+
+    /**
+     * 获取创建标题
+     */
+    getCreateTitle() {
+        return 'identity.module.create';
+    }
+
+    /**
+     * 获取更新标题
+     */
+    getEditTitle() {
+        return 'identity.module.update';
+    }
+
+    /**
+     * 获取详情标题
+     */
+    getDetailTitle() {
+        return 'identity.module.detail';
     }
 
     /**
@@ -56,13 +94,6 @@ export class ModuleListComponent extends TreeTableQueryComponentBase<ModuleViewM
         this.selectedApplication = application;
         this.queryParam.applicationId = application.id;
         this.load();
-    }
-
-    /**
-     * 获取创建弹出层组件
-     */
-    getCreateComponent() {
-        return ModuleEditComponent;
     }
 
     /**
@@ -101,13 +132,6 @@ export class ModuleListComponent extends TreeTableQueryComponentBase<ModuleViewM
     }
 
     /**
-     * 获取详情弹出框组件
-     */
-    getDetailComponent() {
-        return ModuleDetailComponent;
-    }
-
-    /**
      * 刷新
      */
     refresh() {
@@ -119,7 +143,6 @@ export class ModuleListComponent extends TreeTableQueryComponentBase<ModuleViewM
      * 配置资源
      */
     configResource(module) {
-        module.expanded = true;
         this.selectedModule = module;
     }
 }

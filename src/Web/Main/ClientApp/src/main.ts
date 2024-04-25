@@ -1,10 +1,29 @@
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { loadManifest } from '@angular-architects/module-federation';
-import { bootstrapConfig } from './app/config/bootstrap-config';
 
 /**
- * ¼ÓÔØÎ¢Ç°¶ËÅäÖÃ²¢Æô¶¯
+ * window
  */
-loadManifest(bootstrapConfig.manifestUrl)
+const win = window as NzSafeAny;
+
+/**
+ * å¾®å‰ç«¯é…ç½®Url
+ */
+export function getManifestUrl() {
+    const result = '/assets/mf.manifest.json';
+    if (!win.bootstrapConfig)
+        return result;
+    if (!win.bootstrapConfig.manifestUrl)
+        return result;
+    if (win.bootstrapConfig.manifestUrl === '${ManifestUrl}')
+        return result;
+    return win.bootstrapConfig.manifestUrl;
+}
+
+/**
+ * åŠ è½½å¾®å‰ç«¯é…ç½®å¹¶å¯åŠ¨
+ */
+loadManifest(getManifestUrl())
     .catch(err => console.error(err))
     .then(_ => import('./bootstrap'))
     .catch(err => console.error(err));

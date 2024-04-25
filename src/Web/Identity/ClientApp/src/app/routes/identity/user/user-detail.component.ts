@@ -1,24 +1,16 @@
-import { Component, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { EditComponentBase } from "util-angular";
 import { UserViewModel } from './model/user-view-model';
 
 /**
 * 用户详情页
 */
-@Component( {
-selector: 'user-detail',
-    templateUrl: environment.production ? './html/detail.component.html' : '/view/routes/identity/user/detail'
-} )
+@Component({
+    selector: 'user-detail',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/user-detail.component.html'
+})
 export class UserDetailComponent extends EditComponentBase<UserViewModel> {
-    /**
-     * 初始化用户详情页
-     * @param injector 注入器
-     */
-    constructor( injector: Injector ) {
-        super( injector );
-    }
-
     /**
      * 获取基地址
      */

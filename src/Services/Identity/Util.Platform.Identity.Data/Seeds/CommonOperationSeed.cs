@@ -8,7 +8,7 @@ public static class CommonOperationSeed {
     /// 创建默认常用操作资源
     /// </summary>
     public static IEnumerable<CommonOperation> CreateDefaultOperations() {
-        return new[] {
+        return [
             new CommonOperation( "7DE225C2-97F0-599F-392F-8C3C4F20424A".ToGuid() ) {
                 Name = "查看",
                 Enabled = true,
@@ -99,6 +99,6 @@ public static class CommonOperationSeed {
                 SortId = 9,
                 Version = "6654087a-0d96-4689-831e-0cadc2e5831e"u8.ToArray()
             }
-        };
+        ];
     }
 }

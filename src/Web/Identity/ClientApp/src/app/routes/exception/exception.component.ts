@@ -1,17 +1,17 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ExceptionType } from '@delon/abc/exception';
+import { ExceptionModule, ExceptionType } from '@delon/abc/exception';
 
 @Component({
-    selector: 'app-exception',
-    template: ` <exception [type]="type" style="min-height: 500px; height: 80%;"> </exception> `,
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-exception',
+  template: ` <exception [type]="type" style="min-height: 500px; height: 80%;" />`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [ExceptionModule]
 })
 export class ExceptionComponent {
-    get type(): ExceptionType {
-        return this.route.snapshot.data['type'];
-    }
-
-    constructor(private route: ActivatedRoute) {
-    }
+  private readonly route = inject(ActivatedRoute);
+  get type(): ExceptionType {
+    return this.route.snapshot.data['type'];
+  }
 }

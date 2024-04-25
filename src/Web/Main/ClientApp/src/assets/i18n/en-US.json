@@ -39,6 +39,7 @@
     "enableConfirmation": "Are you sure to enable the selected record?",
     "disableConfirmation": "Are you sure to disable the selected record?",
     "saveConfirmation": "Are you sure to save?",
+    "saveDirtyConfirmation": "Unsaved changes are found. Do you want to save?",
     "noDeleteItemSelected": "Please select the record to be deleted",
     "notSelected": "Please select the record to operate",
     "noNeedSave": "There are no records to save",
@@ -51,6 +52,7 @@
     "phoneMessage": "Please enter a valid mobile number",
     "idCardMessage": "Please enter a valid ID card",
     "unauthorizedMessage": "You are not authorized to perform this operation",
+    "timeoutMessage": "The operation timed out",
     "creationTime": "Creation Time",
     "lastModificationTime": "Last Modification Time",
     "beginCreationTime": "Begin Creation Time",
@@ -61,7 +63,38 @@
     "i18n": "I18n",
     "isHide": "IsHide",
     "male": "Male",
-    "female": "Female"
+    "female": "Female",
+    "copyToClipboard": "Copy to clipboard",
+    "copySucceeded": "Copy succeeded",
+    "copyFailed": "Copy failed",
+    "collapse": "Collapse",
+    "expand": "Expand",
+    "tableSettings": "Table Settings",
+    "tableSize": "Table Size",
+    "tableBorder": "Table Border",
+    "optionalColumns": "Optional Columns",
+    "selectedColumns": "Selected Columns",
+    "scrollWidth": "Scroll Width",
+    "scrollHeight": "Scroll Height",
+    "column": "Column",
+    "columnWidth": "Width",
+    "fixToLeft": "Fix To Left",
+    "fixToRight": "Fix To Right",
+    "headerAlignment": "Header Alignment",
+    "contentAlignment": "Content Alignment",
+    "ellipsisDisplay": "Ellipsis Display",
+    "hide": "Hide",
+    "unedit": "Cancel Edit",
+    "default": "Default",
+    "small": "Small",
+    "middle": "Middle",
+    "checkbox": "Checkbox",
+    "radio": "Radio",
+    "action": "Action",
+    "add": "Add",
+    "init": "Initialize",
+    "fullscreen":"Fullscreen",
+    "fullscreenExit":"Fullscreen Exit"
   },
   "app": {
     "totalTip": "total: <strong class='text-primary mx-xs'>{{total}}</strong>",
@@ -69,10 +102,50 @@
     "rowsSelected": "<strong class='text-primary mx-xs'>{{length}}</strong> Rows Selected",
     "currentApplication": "Current Application: <strong class='text-primary ml-sm'> {{application}}</strong>",
     "selectApplication": "Please select an application",
-    "baseInfo": "Base Info"
+    "hideApplication": "Hide application list",
+    "showApplication": "Show application list",
+    "baseInfo": "Base Info",
+    "monitor": {
+      "trading-activity": "Trading Activity",
+      "total-transactions": "Total Transactions",
+      "sales-target": "Sales Target",
+      "remaining-time": "Remaining Time",
+      "total-transactions-per-second": "Total Transactions Per Second",
+      "activity-forecast": "Activity Forecast",
+      "efficiency": "Efficiency",
+      "ratio": "Ratio",
+      "proportion-per-category": "Proportion Per Category",
+      "fast-food": "Fast Food",
+      "western-food": "Western Food",
+      "hot-pot": "Hot Pot",
+      "waiting-for-implementation": "Waiting For Implementation",
+      "popular-searches": "Popular Searches",
+      "resource-surplus": "Resource Surplus",
+      "fund-surplus": "Fund Surplus"
+    }
   },
+  "home": "Home",
   "menu": {
-    "system": "System"
+    "system": "System",
+    "dashboard": {
+      "": "Dashboard",
+      "monitor": "Monitor"
+    },
+    "fullscreen": {
+      "": "Fullscreen",
+      "exit": "Exit"
+    },
+    "clear.local.storage": "Clear Local Storage",
+    "main": "Main",
+    "group": "Group",
+    "hideInBreadcrumb": "Hide In Breadcrumb",
+    "shortcut": "Shortcut",
+    "account": {
+      "": "Account",
+      "center": "Account Center",
+      "settings": "Account Settings",
+      "logout": "Logout"
+    }
   },
   "identity": {
     "application": {
@@ -124,9 +197,11 @@
       "parentId": "Parent Module",
       "remark": "Remark",
       "resourceSettings": "Resource Settings",
+      "menuSettings": "Menu Settings",
       "enabled": "Enabled",
       "sortId": "SortId",
-      "createSubModule": "Create SubModule"
+      "createSubModule": "Create SubModule",
+      "hideInBreadcrumbDescription": "Hide In Breadcrumb"
     },
     "operation": {
       "": "Operation",
@@ -134,7 +209,8 @@
       "update": "Edit Operation",
       "delete": "Delete Operation",
       "detail": "Operation Detail",
-      "module": "Module:<strong class='text-primary mx-sm'>{{module}},</strong>",
+      "title": "<span class='ml-sm'>Operation</span>",
+      "module": "<strong class='text-primary mr-sm'>{{module}}</strong>",
       "manageCommonOperation": "Manage Common Operation",
       "uri": "Uri",
       "name": "Name",
@@ -252,6 +328,8 @@
       "grantPermission": "Grant Permission",
       "denyPermission": "Deny Permission",
       "operationPermission": "Operation Permission",
+      "grantOperationPermission": "Grant Operation Permission",
+      "denyOperationPermission": "Deny Operation Permission",
       "columnsPermission": "Columns Permission",
       "rowsPermission": "Rows Permission",
       "apiPermission": "API Permission"

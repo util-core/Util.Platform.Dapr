@@ -1,5 +1,4 @@
-﻿import { Component, Injector, ViewChild } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { TreeTableQueryComponentBase } from "util-angular";
 import { ResourceQuery } from '../resource/model/resource-query';
 import { ApiResourceViewModel } from './model/api-resource-view-model';
@@ -13,7 +12,8 @@ import { ApiResourceDetailComponent } from './api-resource-detail.component';
  */
 @Component({
     selector: 'api-resource-list',
-    templateUrl: environment.production ? './html/index.component.html' : '/view/routes/identity/apiResource'
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/api-resource-list.component.html'
 })
 export class ApiResourceListComponent extends TreeTableQueryComponentBase<ApiResourceViewModel, ResourceQuery>  {
     /**
@@ -27,11 +27,45 @@ export class ApiResourceListComponent extends TreeTableQueryComponentBase<ApiRes
 
     /**
      * 初始化Api资源列表页
-     * @param injector 注入器
      */
-    constructor(injector: Injector) {
-        super(injector);
+    constructor() {
+        super();
         this.selectedApplication = new ApplicationViewModel();
+    }
+
+    /**
+     * 获取创建弹出层组件
+     */
+    getCreateComponent() {
+        return ApiResourceEditComponent;
+    }
+
+    /**
+     * 获取详情弹出框组件
+     */
+    getDetailComponent() {
+        return ApiResourceDetailComponent;
+    }
+
+    /**
+     * 获取创建标题
+     */
+    getCreateTitle() {
+        return 'identity.apiResource.create';
+    }
+
+    /**
+     * 获取更新标题
+     */
+    getEditTitle() {
+        return 'identity.apiResource.update';
+    }
+
+    /**
+     * 获取详情标题
+     */
+    getDetailTitle() {
+        return 'identity.apiResource.detail';
     }
 
     /**
@@ -52,13 +86,6 @@ export class ApiResourceListComponent extends TreeTableQueryComponentBase<ApiRes
         this.selectedApplication = application;
         this.queryParam.applicationId = application.id;
         this.load();
-    }
-
-    /**
-     * 获取创建弹出层组件
-     */
-    getCreateComponent() {
-        return ApiResourceEditComponent;
     }
 
     /**
@@ -94,13 +121,6 @@ export class ApiResourceListComponent extends TreeTableQueryComponentBase<ApiRes
             applicationId: this.selectedApplication.id,
             applicationName: this.selectedApplication.name
         };
-    }
-
-    /**
-     * 获取详情弹出框组件
-     */
-    getDetailComponent() {
-        return ApiResourceDetailComponent;
     }
 
     /**

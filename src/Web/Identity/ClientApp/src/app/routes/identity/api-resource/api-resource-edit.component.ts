@@ -1,5 +1,4 @@
-﻿import { Component, Injector, Input } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { TreeEditComponentBase } from "util-angular";
 import { ResourceQuery } from '../resource/model/resource-query';
 import { ApiResourceViewModel } from './model/api-resource-view-model';
@@ -9,7 +8,8 @@ import { ApiResourceViewModel } from './model/api-resource-view-model';
  */
 @Component( {
     selector: 'api-resource-edit',
-    templateUrl: environment.production ? './html/edit.component.html' : '/view/routes/identity/apiResource/edit'
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/api-resource-edit.component.html'
 } )
 export class ApiResourceEditComponent extends TreeEditComponentBase<ApiResourceViewModel> {
     /**
@@ -27,11 +27,10 @@ export class ApiResourceEditComponent extends TreeEditComponentBase<ApiResourceV
 
     /**
      * 初始化Api资源编辑页
-     * @param injector 注入器
      */
-    constructor( injector: Injector ) {
-        super(injector);
-        let param = this.util.dialog.getData<any>();
+    constructor() {
+        super();
+        let param = this.util.drawer.getData<any>();
         if (param) {
             this.applicationId = param.applicationId;
             this.applicationName = param.applicationName;

@@ -6,35 +6,35 @@
 		<AssemblyName>Util.Platform.Ui.Main</AssemblyName>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
-		<TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
 		<IsPackable>false</IsPackable>
-		<SpaRoot>ClientApp\</SpaRoot>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Util.Logging.Serilog" Version="8.0.0" />
-		<PackageReference Include="Util.Ui.NgZorro" Version="8.0.0" />
-		<PackageReference Include="Util.Ui.NgAlain" Version="8.0.0" />
+		<PackageReference Include="Util.Logging.Serilog" Version="8.0.14" />
+		<PackageReference Include="Util.Ui.NgAlain" Version="8.0.14" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Remove="$(SpaRoot)**" />
-		<None Remove=".gitignore" />
-		<None Remove=".gitmodules" />
-		<None Remove="$(SpaRoot)**" />
-		<None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
-		<None Remove="$(SpaRoot)\package\.git" />
-        <None Remove="$(SpaRoot).angular\**" />
-		<None Remove="$(SpaRoot)dist\**" />
-        <None Remove="$(SpaRoot).eslintignore" />
-        <None Remove="$(SpaRoot).eslintrc.js" />
-        <None Remove="$(SpaRoot).gitignore" />
-        <None Remove="$(SpaRoot).nvmrc" />
-        <None Remove="$(SpaRoot).stylelintrc" />
-		<None Remove="$(SpaRoot).prettierignore" />
-        <None Remove="$(SpaRoot).prettierrc.js" />
-        <None Remove="$(SpaRoot).npmignore" />
-		<None Remove="$(SpaRoot)clear-node-modules.ps1" />
-		<None Remove="$(SpaRoot)start.ps1" />
-    </ItemGroup>
+		<Compile Remove="ClientApp\dist\**" />
+		<Compile Remove="ClientApp\node_modules\**" />
+		<Content Remove="ClientApp\dist\**" />
+		<Content Remove="ClientApp\node_modules\**" />
+		<EmbeddedResource Remove="ClientApp\dist\**" />
+		<EmbeddedResource Remove="ClientApp\node_modules\**" />
+		<TypeScriptCompile Remove="ClientApp\node_modules\**" />
+		<None Remove="ClientApp\.angular\**" />
+		<None Remove="ClientApp\dist\**" />
+		<None Remove="ClientApp\.eslintignore" />
+		<None Remove="ClientApp\.eslintrc.js" />
+		<None Remove="ClientApp\.gitignore" />
+		<None Remove="ClientApp\.npmignore" />
+		<None Remove="ClientApp\.nvmrc" />
+		<None Remove="ClientApp\.prettierignore" />
+		<None Remove="ClientApp\.prettierrc.js" />
+		<None Remove="ClientApp\.stylelintrc" />
+		<None Remove="ClientApp\yarn.lock" />
+		<None Remove="ClientApp\clear-node-modules.ps1" />
+		<None Remove="ClientApp\start.ps1" />
+		<None Remove="start.ps1" />
+	</ItemGroup>
 </Project>

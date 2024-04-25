@@ -1,5 +1,4 @@
-import { Component, Injector, OnInit, OnDestroy } from '@angular/core';
-import { environment } from "@env/environment";
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
 import { QueryComponentBase, DataLoader } from "util-angular";
 import { ApplicationQuery } from './model/application-query';
 import { ApplicationViewModel } from './model/application-view-model';
@@ -11,13 +10,45 @@ import { ApplicationDetailComponent } from './application-detail.component';
  */
 @Component({
     selector: 'application-list',
-    templateUrl: environment.production ? './html/index.component.html' : '/view/routes/identity/application'
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/application-list.component.html',
+    styles: [`
+        .cardlist {
+            .ant-col {
+                padding:12px 12px
+            }
+            .ant-card {
+                border-radius:8px;
+                height:206px;
+            }
+            button {
+                height:206px;
+                border:dashed 1px #d9d9d9;
+                border-radius:8px;
+                color:rgba(0, 0, 0, 0.5);
+                margin-bottom:16px;
+            }
+            .ant-card-body {
+                padding:10px 24px 34px 24px;
+                .ant-card-meta-description{
+                    color:rgba(0, 0, 0, 0.88)
+                }            
+            }
+            .ant-card-actions {
+                background:none
+            }
+        }    
+   `]
 })
-export class ApplicationListComponent extends QueryComponentBase<ApplicationQuery> implements OnInit, OnDestroy {    
+export class ApplicationListComponent extends QueryComponentBase<ApplicationQuery> implements OnInit, OnDestroy {
     /**
      * 数据加载器
      */
     loader: DataLoader<ApplicationViewModel>;
+    /**
+     * 头像加载状态
+     */
+    avatarLoading: boolean;
     /**
      * 数据容器
      */
@@ -27,21 +58,12 @@ export class ApplicationListComponent extends QueryComponentBase<ApplicationQuer
 
     /**
      * 初始化应用程序列表页
-     * @param injector 注入器
      */
-    constructor(injector: Injector) {
-        super(injector);
-        this.loader = new DataLoader<ApplicationViewModel>(this.util);
-    }
-
-    /**
-     * 创建查询参数
-     */
-    createQuery() {
-        let result = new ApplicationQuery();
-        result.pageSize = 12;
-        return result;
-    }
+    constructor() {
+        super();
+        this.loader = new DataLoader<ApplicationViewModel>();
+        this.avatarLoading = true;
+    }    
 
     /**
      * 初始化
@@ -73,12 +95,41 @@ export class ApplicationListComponent extends QueryComponentBase<ApplicationQuer
     }
 
     /**
+     * 获取创建标题
+     */
+    getCreateTitle() {
+        return 'identity.application.create';
+    }
+
+    /**
+     * 获取更新标题
+     */
+    getEditTitle() {
+        return 'identity.application.update';
+    }
+
+    /**
+     * 获取详情标题
+     */
+    getDetailTitle() {
+        return 'identity.application.detail';
+    }
+
+    /**
+     * 创建查询参数
+     */
+    createQuery() {
+        let result = new ApplicationQuery();
+        result.pageSize = 19;
+        result.order = "CreationTime Desc";
+        return result;
+    }
+
+    /**
      * 查询
      */
     query(button?) {
-        this.loader.initOnScrollToBottomLoad();
         this.loader.query({
-            page:1,
             url: "application",
             param: this.queryParam,
             button: button
@@ -89,7 +140,7 @@ export class ApplicationListComponent extends QueryComponentBase<ApplicationQuer
      * 删除
      * @param ids 标识列表
      */
-    delete(ids) {
+    delete(ids?) {
         this.loader.delete({
             ids: ids
         });
@@ -99,9 +150,8 @@ export class ApplicationListComponent extends QueryComponentBase<ApplicationQuer
      * 刷新
      */
     refresh(button?) {
-        this.loader.clear();
         this.queryParam = this.createQuery();
-        this.query(button);
+        this.loader.refresh(this.queryParam, button);
     }
 
     /**
@@ -116,5 +166,12 @@ export class ApplicationListComponent extends QueryComponentBase<ApplicationQuer
      */
     getAvatarUrl(model: ApplicationViewModel) {
         return this.util.url.query({ text: model.name }).get("/tools/api/avatar");
+    }
+
+    /**
+     * 头像加载完成事件
+     */
+    onLoadAvatar() {
+        this.avatarLoading = false;
     }
 }

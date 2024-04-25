@@ -1,5 +1,4 @@
-﻿import { Component, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { EditComponentBase } from "util-angular";
 import { ModuleViewModel } from './model/module-view-model';
 
@@ -8,17 +7,10 @@ import { ModuleViewModel } from './model/module-view-model';
  */
 @Component({
     selector: 'module-detail',
-    templateUrl: environment.production ? './html/detail.component.html' : '/view/routes/identity/module/detail'
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/module-detail.component.html'
 })
 export class ModuleDetailComponent extends EditComponentBase<ModuleViewModel> {
-    /**
-     * 初始化模块详情页
-     * @param injector 注入器
-     */
-    constructor(injector: Injector) {
-        super(injector);
-    }
-
     /**
      * 获取基地址
      */

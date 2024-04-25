@@ -1,5 +1,4 @@
-﻿import { Component, Injector, Input } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { TreeEditComponentBase } from "util-angular";
 import { ModuleViewModel } from './model/module-view-model';
 import { ResourceQuery } from '../resource/model/resource-query';
@@ -9,7 +8,8 @@ import { ResourceQuery } from '../resource/model/resource-query';
  */
 @Component({
     selector: 'module-edit',
-    templateUrl: environment.production ? './html/edit.component.html' : '/view/routes/identity/module/edit'
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/module-edit.component.html'
 })
 export class ModuleEditComponent extends TreeEditComponentBase<ModuleViewModel> {
     /**
@@ -27,11 +27,10 @@ export class ModuleEditComponent extends TreeEditComponentBase<ModuleViewModel> 
 
     /**
      * 初始化模块编辑页
-     * @param injector 注入器
      */
-    constructor(injector: Injector) {
-        super(injector);
-        let param = this.util.dialog.getData<any>();
+    constructor() {
+        super();
+        let param = this.util.drawer.getData<any>();
         if (param) {
             this.applicationId = param.applicationId;
             this.applicationName = param.applicationName;

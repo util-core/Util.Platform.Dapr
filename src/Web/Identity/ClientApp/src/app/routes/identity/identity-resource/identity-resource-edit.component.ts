@@ -1,5 +1,4 @@
-﻿import { Component, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { EditComponentBase } from 'util-angular';
 import { IdentityResourceViewModel } from './model/identity-resource-view-model';
 
@@ -8,17 +7,10 @@ import { IdentityResourceViewModel } from './model/identity-resource-view-model'
  */
 @Component({
     selector: 'identity-resource-edit',
-    templateUrl: environment.production ? './html/edit.component.html' : '/view/routes/identity/identityResource/edit'
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/identity-resource-edit.component.html'
 })
 export class IdentityResourceEditComponent extends EditComponentBase<IdentityResourceViewModel> {
-    /**
-     * 初始化身份资源编辑页
-     * @param injector 注入器
-     */
-    constructor(injector: Injector) {
-        super(injector);
-    }
-
     /**
      * 创建模型
      */

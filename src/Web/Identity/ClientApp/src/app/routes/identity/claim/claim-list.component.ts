@@ -1,5 +1,4 @@
-﻿import { Component, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TableEditComponentBase } from 'util-angular';
 import { ClaimQuery } from './model/claim-query';
 import { ClaimViewModel } from './model/claim-view-model';
@@ -9,17 +8,10 @@ import { ClaimViewModel } from './model/claim-view-model';
  */
 @Component({
     selector: 'claim-list',
-    templateUrl: environment.production ? './html/index.component.html' : '/view/routes/identity/claim'
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/claim-list.component.html'
 })
 export class ClaimListComponent extends TableEditComponentBase<ClaimViewModel, ClaimQuery>  {
-    /**
-     * 初始化声明列表页
-     * @param injector 注入器
-     */
-    constructor(injector: Injector) {
-        super(injector);
-    }
-
     /**
      * 创建参数
      */
@@ -27,6 +19,8 @@ export class ClaimListComponent extends TableEditComponentBase<ClaimViewModel, C
         let result = new ClaimViewModel();
         result.enabled = true;
         result.sortId = 0;
+        result.creationTime = new Date();
+        result.lastModificationTime = new Date();
         return result;
     }
 }

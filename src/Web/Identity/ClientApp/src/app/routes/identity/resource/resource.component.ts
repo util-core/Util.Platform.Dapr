@@ -1,5 +1,5 @@
-﻿import { Component, ViewChild } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import { ComponentBase } from 'util-angular';
 import { ModuleListComponent } from '../module/module-list.component';
 
 /**
@@ -7,9 +7,10 @@ import { ModuleListComponent } from '../module/module-list.component';
  */
 @Component({
     selector: 'resource',
-    templateUrl: environment.production ? './html/index.component.html' : '/view/routes/identity/resource'
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/resource.component.html'
 })
-export class ResourceComponent {
+export class ResourceComponent extends ComponentBase {
     /**
      * 当前选项卡索引
      */
@@ -33,5 +34,6 @@ export class ResourceComponent {
     refresh() {
         this.selectedTabIndex = 0;
         this.modules && this.modules.refresh();
+        this.util.changeDetector.detectChanges();
     }
 }

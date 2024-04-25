@@ -1,5 +1,4 @@
-import { Component, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { EditComponentBase } from "util-angular";
 import { UserViewModel } from './model/user-view-model';
 
@@ -8,17 +7,10 @@ import { UserViewModel } from './model/user-view-model';
  */
 @Component( {
     selector: 'user-edit',
-    templateUrl: environment.production ? './html/edit.component.html' : '/view/routes/identity/user/edit'
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/user-edit.component.html'
 } )
 export class UserEditComponent extends EditComponentBase<UserViewModel> {
-    /**
-     * 初始化用户编辑页
-     * @param injector 注入器
-     */
-    constructor( injector: Injector ) {
-        super( injector );
-    }
-
     /**
      * 创建模型
      */

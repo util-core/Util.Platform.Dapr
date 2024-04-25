@@ -15,7 +15,7 @@ builder.AsBuild()
 var app = builder.Build();
 
 //配置请求管道
-app.UseNgZorro( "http://localhost:6001" );
+app.UseNgZorro( 6001 );
 
 //运行应用
 app.Run();

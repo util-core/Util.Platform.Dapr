@@ -1,5 +1,4 @@
-import { Component, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { EditComponentBase } from "util-angular";
 import { RoleViewModel } from './model/role-view-model';
 
@@ -8,17 +7,10 @@ import { RoleViewModel } from './model/role-view-model';
  */
 @Component( {
     selector: 'role-edit',
-    templateUrl: environment.production ? './html/edit.component.html' : '/view/routes/identity/role/edit'
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/role-edit.component.html'
 } )
 export class RoleEditComponent extends EditComponentBase<RoleViewModel> {
-    /**
-     * 初始化角色编辑页
-     * @param injector 注入器
-     */
-    constructor( injector: Injector ) {
-        super(injector);
-    }
-
     /**
      * 创建模型
      */

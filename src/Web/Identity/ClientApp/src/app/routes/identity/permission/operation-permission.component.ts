@@ -1,7 +1,7 @@
-import { Component, Injector, Input, ViewChild, AfterViewInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ViewChild, AfterViewInit, ChangeDetectionStrategy, DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BehaviorSubject } from 'rxjs';
 import { map, filter, distinctUntilChanged } from 'rxjs/operators';
-import { environment } from "@env/environment";
 import { ComponentBase, TreeTableExtendDirective, I18nKeys } from "util-angular";
 import { RoleViewModel } from "../role/model/role-view-model";
 import { PermissionQuery } from '../permission/model/permission-query';
@@ -14,10 +14,14 @@ import { OperationPermissionViewModel } from './model/operation-permission-view-
 */
 @Component({
     selector: 'operation-permission',
-    templateUrl: environment.production ? './html/operation-permission.component.html' : '/view/routes/identity/permission/operationPermission',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/operation-permission.component.html'
 })
-export class OperationPermissionComponent extends ComponentBase implements AfterViewInit, OnDestroy {
+export class OperationPermissionComponent extends ComponentBase implements AfterViewInit {
+    /**
+     * 清理对象
+     */
+    private readonly destroy$ = inject(DestroyRef);
     /**
      * 加载变更对象
      */
@@ -41,14 +45,13 @@ export class OperationPermissionComponent extends ComponentBase implements After
     /**
      * 操作权限树形表格指令
      */
-    @ViewChild("x_tb_operation_permission") treeTable: TreeTableExtendDirective<OperationPermissionViewModel>;
+    @ViewChild("x_tb") treeTable: TreeTableExtendDirective<OperationPermissionViewModel>;
 
     /**
      * 初始化操作权限页
-     * @param injector 注入器
      */
-    constructor(injector: Injector) {
-        super(injector);
+    constructor() {
+        super();
         this.queryParam = new PermissionQuery();
         this.role = new RoleViewModel();
         this.application = new ApplicationViewModel();
@@ -60,6 +63,7 @@ export class OperationPermissionComponent extends ComponentBase implements After
      */
     private initLoad() {
         this.loadChange$.pipe(
+            takeUntilDestroyed(this.destroy$),
             map(application => application && application.id),
             filter(value => {
                 return !this.util.helper.isEmpty(value);
@@ -69,13 +73,8 @@ export class OperationPermissionComponent extends ComponentBase implements After
             this.queryParam.applicationId = applicationId;
             this.queryParam.roleId = this.role.id;
             this.queryParam.isDeny = this.isDeny;
-            if (this.treeTable) {
-                this.treeTable.query({
-                    complete: () => {
-                        this.util.changeDetector.detectChanges();
-                    }
-                });
-            }
+            if (this.treeTable)
+                this.treeTable.query();
         });
     }
 
@@ -91,10 +90,11 @@ export class OperationPermissionComponent extends ComponentBase implements After
     }
 
     /**
-     * 清理
+     * 获取标题
      */
-    ngOnDestroy(): void {
-        this.loadChange$.unsubscribe();
+    getTitle() {
+        let title = this.isDeny ? 'identity.permission.denyOperationPermission' : 'identity.permission.grantOperationPermission';
+        return this.util.i18n.get(title);
     }
 
     /**
@@ -131,6 +131,8 @@ export class OperationPermissionComponent extends ComponentBase implements After
             });
             return;
         }
+        if (this.isDeny)
+            return;
         let baseOperation = operations.find((item: OperationPermissionViewModel) => item.isBase);
         this.treeTable.checkIds(baseOperation.id);
     }

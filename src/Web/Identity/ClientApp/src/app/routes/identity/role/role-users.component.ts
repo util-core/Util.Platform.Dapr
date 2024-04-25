@@ -1,5 +1,4 @@
-﻿import { Component, Injector, OnInit } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { TableQueryComponentBase } from 'util-angular';
 import { UserQuery } from '../user/model/user-query';
 import { UserViewModel } from '../user/model/user-view-model';
@@ -8,19 +7,12 @@ import { SelectUsersComponent } from './select-users.component';
 /**
  * 角色用户列表页
  */
-@Component( {
+@Component({
     selector: 'role-users',
-    templateUrl: environment.production ? './html/role-users.component.html' : '/view/routes/identity/role/roleUsers'
-} )
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/role-users.component.html'
+})
 export class RoleUsersComponent extends TableQueryComponentBase<UserViewModel, UserQuery> implements OnInit {
-    /**
-     * 初始化角色用户列表页
-     * @param injector 注入器
-     */
-    constructor( injector: Injector ) {
-        super( injector );
-    }
-
     /**
      * 初始化
      */
@@ -40,47 +32,46 @@ export class RoleUsersComponent extends TableQueryComponentBase<UserViewModel, U
      */
     createQuery() {
         let result = new UserQuery();
-        if ( this.data )
+        if (this.data)
             result.roleId = this.getRoleId();
         return result;
     }
 
     /**
-     * 打开选择用户列表弹出框
+     * 打开选择用户列表窗口
      */
     openSelectDialog() {
-        this.util.dialog.open( {
+        this.util.dialog.open({
             component: SelectUsersComponent,
+            title: "identity.role.selectUsers",
             data: { data: this.data },
-            width: "80%",
-            centered:true,
             disableClose: true,
-            onOk: instance => {
+            onOk: (instance: SelectUsersComponent) => {
                 let userIds = instance.getCheckedIds();
-                this.select( userIds );
+                this.select(userIds);
                 return false;
             },
             onClose: result => {
-                if ( result )
+                if (result)
                     this.query();
             }
-        } );
+        });
     }
 
     /**
      * 选中用户
      */
-    select( userIds ) {
-        if ( !userIds ) {
-            this.util.message.warn( "identity.role.selectUserMessage" );
+    select(userIds) {
+        if (!userIds) {
+            this.util.message.warn("identity.role.selectUserMessage");
             return;
         }
-        this.util.form.submit( {
+        this.util.form.submit({
             url: "role/addUsersToRole",
             data: { roleId: this.getRoleId(), userIds: userIds },
             confirm: "identity.role.addUsersToRoleConfirm",
             closeDialog: true
-        } );
+        });
     }
 
     /**
@@ -88,17 +79,17 @@ export class RoleUsersComponent extends TableQueryComponentBase<UserViewModel, U
      */
     removeUsersFromRole() {
         let userIds = this.getCheckedIds();
-        if ( !userIds ) {
-            this.util.message.warn( "identity.role.removeUsersFromRoleMessage" );
+        if (!userIds) {
+            this.util.message.warn("identity.role.removeUsersFromRoleMessage");
             return;
         }
-        this.util.form.submit( {
+        this.util.form.submit({
             url: "role/removeUsersFromRole",
-            data: { roleId: this.getRoleId(), userIds: userIds },            
+            data: { roleId: this.getRoleId(), userIds: userIds },
             confirm: "identity.role.removeUsersFromRoleConfirm",
             ok: () => {
                 this.query();
             }
-        } );
+        });
     }
 }

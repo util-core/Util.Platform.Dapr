@@ -1,5 +1,4 @@
-﻿import { Component, Injector,OnInit } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { TableQueryComponentBase } from 'util-angular';
 import { UserQuery } from '../user/model/user-query';
 import { UserViewModel } from '../user/model/user-view-model';
@@ -9,17 +8,10 @@ import { UserViewModel } from '../user/model/user-view-model';
  */
 @Component({
     selector: 'select-users',
-    templateUrl: environment.production ? './html/select-users.component.html' : '/view/routes/identity/role/selectUsers'
-} )
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/select-users.component.html'
+})
 export class SelectUsersComponent extends TableQueryComponentBase<UserViewModel, UserQuery> implements OnInit {
-    /**
-     * 初始化选择用户列表页
-     * @param injector 注入器
-     */
-    constructor(injector: Injector) {
-        super(injector);
-    }
-
     /**
      * 初始化
      */
@@ -39,7 +31,7 @@ export class SelectUsersComponent extends TableQueryComponentBase<UserViewModel,
      */
     createQuery() {
         let result = new UserQuery();
-        if ( this.data )
+        if (this.data)
             result.exceptRoleId = this.getRoleId();
         return result;
     }

@@ -1,5 +1,4 @@
-import { Component, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TableEditComponentBase } from "util-angular";
 import { CommonOperationQuery } from './model/common-operation-query';
 import { CommonOperationViewModel } from './model/common-operation-view-model';
@@ -9,17 +8,10 @@ import { CommonOperationViewModel } from './model/common-operation-view-model';
 */
 @Component( {
     selector: 'common-operation-list',
-    templateUrl: environment.production ? './html/index.component.html' : '/view/routes/identity/commonOperation',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './html/common-operation-list.component.html'
 } )
 export class CommonOperationListComponent extends TableEditComponentBase<CommonOperationViewModel, CommonOperationQuery> {
-    /**
-     * 初始化常用操作资源列表页
-     * @param injector 注入器
-     */
-    constructor( injector: Injector ) {
-        super( injector );
-    }
-
     /**
      * 创建参数
      */
