@@ -17,7 +17,7 @@ builder.AsBuild()
 var app = builder.Build();
 
 //配置请求管道
-app.UseNgZorro( 6003 );
+app.UseNgZorro();
 
 //运行应用
 app.Run();
