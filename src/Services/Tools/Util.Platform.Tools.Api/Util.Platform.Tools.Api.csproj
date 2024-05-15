@@ -10,8 +10,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Util.Application.WebApi" Version="8.0.14" />
-		<PackageReference Include="Util.Logging.Serilog" Version="8.0.14" />
+		<PackageReference Include="Util.Application.WebApi" Version="8.0.15" />
+		<PackageReference Include="Util.Logging.Serilog" Version="8.0.15" />
 		<PackageReference Include="Util.Platform.Share.Tools" Version="0.9.4" />
 	</ItemGroup>
 
