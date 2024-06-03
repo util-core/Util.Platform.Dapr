@@ -10,8 +10,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Util.Logging.Serilog" Version="8.0.16" />
-		<PackageReference Include="Util.Ui.NgAlain" Version="8.0.16" />
+		<PackageReference Include="Util.Logging.Serilog" Version="8.0.18-pre.9" />
+		<PackageReference Include="Util.Ui.NgAlain" Version="8.0.18-pre.9" />
 	</ItemGroup>
 
 	<ItemGroup>

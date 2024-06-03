@@ -5,7 +5,7 @@
 		<AssemblyName>Util.Platform.Identity.Domain</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Util.ObjectMapping.AutoMapper" Version="8.0.16" />
+		<PackageReference Include="Util.ObjectMapping.AutoMapper" Version="8.0.18-pre.9" />
 		<PackageReference Include="Util.Platform.Share.Identity.Domain" Version="0.9.4" />
 	</ItemGroup>
 	<ItemGroup>

@@ -7,8 +7,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Util.Microservices.Dapr" Version="8.0.16" />
-		<PackageReference Include="Util.Microservices.Polly" Version="8.0.16" />
+		<PackageReference Include="Util.Microservices.Dapr" Version="8.0.18-pre.9" />
+		<PackageReference Include="Util.Microservices.Polly" Version="8.0.18-pre.9" />
 		<PackageReference Include="Util.Platform.Share.Apps" Version="0.9.4" />
 	</ItemGroup>
 

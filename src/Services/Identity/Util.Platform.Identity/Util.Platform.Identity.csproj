@@ -11,7 +11,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
-		<PackageReference Include="Util.Microservices.HealthChecks" Version="8.0.16" />
+		<PackageReference Include="Util.Microservices.HealthChecks" Version="8.0.18-pre.9" />
 		<PackageReference Include="Util.Platform.Share.Identity.IdentityServer" Version="0.9.4" />
 	</ItemGroup>
 
